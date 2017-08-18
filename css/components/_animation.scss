@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin-rev {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+}
+@keyframes spin-rev {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+}
+
+
+$durations:(
+        200ms,
+        400ms,
+        600ms,
+        1s,
+        2s,
+        3s,
+        4s,
+        5s,
+        6s,
+        7s,
+        10s,
+        12s,
+        15s,
+        20s,
+        30s,
+        45s,
+        60s,
+        120s,
+        240s,
+        480s,
+);
+
+@each $duration in $durations{
+    .spin-#{$duration} {
+        -webkit-animation: spin $duration linear infinite both;
+        animation: spin $duration linear infinite both;
+    }
+}
+
+@each $duration in $durations{
+    .spin-rev-#{$duration} {
+        -webkit-animation: spin-rev $duration linear infinite both;
+        animation: spin-rev $duration linear infinite both;
+    }
+}

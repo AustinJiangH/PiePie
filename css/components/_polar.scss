@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+body{
+    position: relative;
+}
+
+.container{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.axis-0, .axis-1, .axis-2, .axis-3, .axis-4, .axis-5,
+.axis-6, .axis-7, .axis-8, .axis-9, .axis-10, .axis-11{
+    position: absolute;
+}
+
+.pole{
+    height: 0 !important;
+    width: 0 !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+
+
+$rem-num: 30;
+
+$lengths: (
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        10,
+        12,
+        15,
+        17,
+        20,
+        23,
+        25,
+        30,
+        35,
+        40,
+        50,
+        70,
+);
+
+
+
+$axises: (
+        "axis-0": (0rem, -1rem),
+        "axis-1": (0.5rem, -0.86602540378445rem),
+        "axis-2": (0.86602540378445rem, -0.5rem),
+        "axis-3": (1rem, 0rem),
+        "axis-4": (0.86602540378445rem, 0.5rem),
+        "axis-5": (0.5rem, 0.86602540378445rem),
+        "axis-6": (0rem, 1rem),
+        "axis-7": (-0.5rem, 0.86602540378445rem),
+        "axis-8": (-0.86602540378445rem, 0.5rem),
+        "axis-9": (-1rem, 0rem),
+        "axis-10": (-0.86602540378445rem, -0.5rem),
+        "axis-11": (-0.5rem, -0.86602540378445rem),
+);
+
+@each $axis, $axis-direction in $axises{
+    @each $length in $lengths{
+        .#{$axis}.len-#{$length} {
+            transform: translate($length*nth($axis-direction, 1), $length*nth($axis-direction, 2));
+        }
+    }
+}
+
+
+
+
+
