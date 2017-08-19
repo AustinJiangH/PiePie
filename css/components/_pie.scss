@@ -35,6 +35,24 @@ $rad: (
         80rem,
 
 );
+
+@media screen and (max-width: 767px){
+    @each $radius in $rad{
+        .pie-#{$radius} {
+            position: absolute;
+            height: $radius/2*1.1;
+            width: $radius/2*1.1;
+            padding: $radius/2*0.45;
+            top: -$radius/2 !important;
+            left: -$radius/2 !important;
+            border-radius: $radius/2;
+        }
+        /*.pie-#{$radius}:hover {
+            z-index: 999;
+        }*/
+    }
+}
+
 @each $radius in $rad{
     .pie-#{$radius} {
         position: absolute;
@@ -45,7 +63,11 @@ $rad: (
         left: -$radius !important;
         border-radius: $radius;
     }
+    /*.pie-#{$radius}:hover {
+        z-index: 999;
+    }*/
 }
+//
 
 
 

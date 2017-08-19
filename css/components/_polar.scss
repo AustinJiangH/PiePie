@@ -72,7 +72,56 @@ $axises: (
         .#{$axis}.len-#{$length} {
             transform: translate($length*nth($axis-direction, 1), $length*nth($axis-direction, 2));
         }
+        .#{$axis}.len-#{$length}.line:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 2px;
+            width: $length;
+            background-color: #00b0ff;
+            transform-origin: left center;
+            transition: linear ;
+            transition-duration: 200ms;
+            @if $axis == 'axis-0'{
+                transform: rotate(90deg);
+            }
+            @if $axis == 'axis-1'{
+                transform: rotate(120deg);
+            }
+            @if $axis == 'axis-2'{
+                transform: rotate(150deg);
+            }
+            @if $axis == 'axis-3'{
+                transform: rotate(180deg);
+            }
+            @if $axis == 'axis-4'{
+                transform: rotate(210deg);
+            }
+            @if $axis == 'axis-5'{
+                transform: rotate(240deg);
+            }
+            @if $axis == 'axis-6'{
+                transform: rotate(270deg);
+            }
+            @if $axis == 'axis-7'{
+                transform: rotate(300deg);
+            }
+            @if $axis == 'axis-8'{
+                transform: rotate(330deg);
+            }
+            @if $axis == 'axis-9'{
+                transform: rotate(360deg);
+            }
+            @if $axis == 'axis-10'{
+                transform: rotate(390deg);
+            }
+            @if $axis == 'axis-11'{
+                transform: rotate(420deg);
+            }
+        }
     }
+
 }
 
 
