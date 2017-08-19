@@ -26,6 +26,12 @@
         .section-3 .node-1.line:before{
             background-color: transparent !important;
         }
+        .section4 .spin{
+            animation-duration: 600s !important;
+        }
+        .section4 .spin-rev{
+            animation-duration: 600s !important;
+        }
     </style>
 </head>
 <body><section class="container" style="">
@@ -33,7 +39,7 @@
 
         <div class="pie-4rem axis-0 len-0rem orange accent-2"></div>
         <div class="pie-3rem axis-0 len-0rem white"></div>
-        <div class="axis-0  len-16rem"><div class="pole spin-6s">
+        <div class="axis-0  len-16rem"><div class="pole spin">
             <div class="axis-0  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-1  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-2  len-6rem  pie-10px  cyan accent-2"></div>
@@ -48,7 +54,7 @@
             <div class="axis-11 len-6rem  pie-10px  cyan accent-2"></div>
         </div></div>
         <div class="axis-1  len-16rem pie-2rem cyan accent-1"></div>
-        <div class="axis-2  len-16rem"><div class="pole spin-6s">
+        <div class="axis-2  len-16rem"><div class="pole spin">
             <div class="axis-0  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-1  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-2  len-6rem  pie-10px  cyan accent-2"></div>
@@ -63,7 +69,7 @@
             <div class="axis-11 len-6rem  pie-10px  cyan accent-2"></div>
         </div></div>
         <div class="axis-3  len-16rem pie-2rem cyan accent-1"></div>
-        <div class="axis-4  len-16rem"><div class="pole spin-6s">
+        <div class="axis-4  len-16rem"><div class="pole spin">
             <div class="axis-0  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-1  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-2  len-6rem  pie-10px  cyan accent-2"></div>
@@ -78,7 +84,7 @@
             <div class="axis-11 len-6rem  pie-10px  cyan accent-2"></div>
         </div></div>
         <div class="axis-5  len-16rem pie-2rem cyan accent-1"></div>
-        <div class="axis-6  len-16rem"><div class="pole spin-6s">
+        <div class="axis-6  len-16rem"><div class="pole spin">
             <div class="axis-0  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-1  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-2  len-6rem  pie-10px  cyan accent-2"></div>
@@ -93,7 +99,7 @@
             <div class="axis-11 len-6rem  pie-10px  cyan accent-2"></div>
         </div></div>
         <div class="axis-7  len-16rem pie-2rem cyan accent-1"></div>
-        <div class="axis-8  len-16rem"><div class="pole spin-6s">
+        <div class="axis-8  len-16rem"><div class="pole spin">
             <div class="axis-0  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-1  len-6rem  pie-10px  cyan accent-2"></div>
             <div class="axis-2  len-6rem  pie-10px  cyan accent-2"></div>
@@ -108,9 +114,9 @@
             <div class="axis-11 len-6rem  pie-10px  cyan accent-2"></div>
         </div></div>
         <div class="axis-9  len-16rem pie-2rem cyan accent-1"></div>
-        <div class="axis-10 len-16rem"><div class="pole spin-6s">
+        <div class="axis-10 len-16rem"><div class="pole spin">
             <div class="axis-0  len-6rem  pie-10px  cyan accent-2">
-                <div class="pole purple spin-6s spin-rev-2s">
+                <div class="pole purple spin spin-rev-2s">
                     <div class="axis-0  len-3rem  pie-5px  grey"></div>
                     <div class="axis-1  len-3rem  pie-5px  grey"></div>
                     <div class="axis-2  len-3rem  pie-5px  grey"></div>
@@ -140,7 +146,7 @@
         <div class="axis-11 len-16rem pie-2rem cyan accent-1"></div>
     </div>
     <script>
-        $('.pole  .pole').addClass('spin-6s');
+        $('.pole  .pole').addClass('spin');
         $('.pole .pole .pole').addClass('spin-rev-2s');
 
     </script>
@@ -302,7 +308,7 @@
         <div class="axis-11 len-16rem pie-2rem cyan accent-1"  ></div>
     </div>
     <script>
-        $('.pole  .pole').addClass('spin-6s');
+        $('.pole  .pole').addClass('spin');
         $('.pole .pole .pole').addClass('spin-rev-2s');
         $('.jump').css({
             'transition': 'ease 1s',
@@ -364,7 +370,7 @@
         };
 
         let options2 = {
-            pole: 'spin-3s',
+            pole: 'spin',
             dots: [
                 [0,  '3rem', ' node-2 line'],
                 [1,  '3rem', ' node-2 line'],
@@ -384,7 +390,7 @@
             ],
         };
         let options3 = {
-            pole: 'spin-1s',
+            pole: 'spin',
             dots: [
                 [0,  '1rem', ' node-3 line'],
                 [1,  '2rem', ' node-3 line'],
@@ -440,7 +446,7 @@
          };
 
         options2 = {
-            pole: 'spin-3s',
+            pole: 'spin',
             dots: [
                 [0,  '3rem', ' node-2 line'],
                 [1,  '3rem', ' node-2 line'],
@@ -460,7 +466,7 @@
             ],
         };
         options3 = {
-            pole: 'spin-1s',
+            pole: 'spin',
             dots: [
                 [0,  '1rem', ' node-3 line'],
                 [1,  '2rem', ' node-3 line'],
@@ -505,7 +511,7 @@
 </section>
 
 
-<section class="container" style="background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);">
+<section class="container section-4" style="background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);">
     <div class="pole" style="top: 50%; left:0;" id="pole-2">
         <div class="pie-13rem axis-0 len-0rem " style="background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);"></div>
         <div class=" axis-1  len-50rem">
@@ -580,9 +586,15 @@
     <script>
 
 
-        $('#pole-2').addClass('spin-60s');
-        $('.card').addClass('spin-rev-60s');
-        $('.edge-dot').addClass('spin-3s')
+        $('#pole-2').addClass('spin');
+        $('#pole-2').css({
+            'animation-duration': '120s'
+        });
+        $('.card').addClass('spin-rev');
+        $('.card').css({
+            'animation-duration': '120s'
+        });
+        $('.edge-dot').addClass('spin')
 
 
 
@@ -597,9 +609,9 @@
         </div>
     </div>
     <div class="pole ">
-        <div class="pie-6px yellow scale-up-400ms"></div>
+        <div class="pie-6px yellow scale-up"></div>
         <div class="axis-0 len-6rem line ">
-            <div class="pie-2rem green scale-up-400ms"></div>
+            <div class="pie-2rem green scale-up"></div>
             <div class="pole">
                 <div class="axis-2 len-4rem">
                     <div class="pie-1rem blue"></div>
@@ -613,7 +625,7 @@
             </div>
         </div>
         <div class="axis-4 len-6rem line">
-            <div class="pie-2rem green flip-right-400ms"></div>
+            <div class="pie-2rem green flip-right"></div>
             <div class="pole">
                 <div class="axis-2 len-4rem">
                     <div class="pie-1rem blue"></div>
@@ -627,7 +639,7 @@
             </div>
         </div>
         <div class="axis-8 len-6rem line">
-            <div class="pie-2rem green scale-up-200ms"></div>
+            <div class="pie-2rem green scale-up"></div>
             <div class="pole">
                 <div class="axis-2 len-4rem">
                     <div class="pie-1rem blue"></div>

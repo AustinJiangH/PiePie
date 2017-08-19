@@ -6394,6 +6394,14 @@ body {
   100% {
     -webkit-transform: rotate(-360deg);
     transform: rotate(-360deg); } }
+.spin {
+  -webkit-animation: spin 2s linear infinite both;
+  animation: spin 2s linear infinite both; }
+
+.spin-rev {
+  -webkit-animation: spin-rev 2s linear infinite both;
+  animation: spin-rev 2s linear infinite both; }
+
 @-webkit-keyframes scale-up {
   0% {
     -webkit-transform: scale(1);
@@ -6434,6 +6442,14 @@ body {
   100% {
     -webkit-transform: scale(1);
     transform: scale(1); } }
+.scale-up:hover {
+  -webkit-animation: scale-up 400ms linear both;
+  animation: scale-up 400ms linear both; }
+
+.scale-up {
+  -webkit-animation: scale-up-rev 100ms linear both;
+  animation: scale-up-rev 100ms linear both; }
+
 @-webkit-keyframes flip-right {
   0% {
     -webkit-transform: rotateY(0);
@@ -6462,195 +6478,11 @@ body {
   100% {
     -webkit-transform: rotateY(-180deg);
     transform: rotateY(-180deg); } }
-.spin-200ms {
-  -webkit-animation: spin 200ms linear infinite both;
-  animation: spin 200ms linear infinite both; }
-
-.spin-400ms {
-  -webkit-animation: spin 400ms linear infinite both;
-  animation: spin 400ms linear infinite both; }
-
-.spin-600ms {
-  -webkit-animation: spin 600ms linear infinite both;
-  animation: spin 600ms linear infinite both; }
-
-.spin-1s {
-  -webkit-animation: spin 1s linear infinite both;
-  animation: spin 1s linear infinite both; }
-
-.spin-2s {
-  -webkit-animation: spin 2s linear infinite both;
-  animation: spin 2s linear infinite both; }
-
-.spin-3s {
-  -webkit-animation: spin 3s linear infinite both;
-  animation: spin 3s linear infinite both; }
-
-.spin-4s {
-  -webkit-animation: spin 4s linear infinite both;
-  animation: spin 4s linear infinite both; }
-
-.spin-5s {
-  -webkit-animation: spin 5s linear infinite both;
-  animation: spin 5s linear infinite both; }
-
-.spin-6s {
-  -webkit-animation: spin 6s linear infinite both;
-  animation: spin 6s linear infinite both; }
-
-.spin-7s {
-  -webkit-animation: spin 7s linear infinite both;
-  animation: spin 7s linear infinite both; }
-
-.spin-10s {
-  -webkit-animation: spin 10s linear infinite both;
-  animation: spin 10s linear infinite both; }
-
-.spin-12s {
-  -webkit-animation: spin 12s linear infinite both;
-  animation: spin 12s linear infinite both; }
-
-.spin-15s {
-  -webkit-animation: spin 15s linear infinite both;
-  animation: spin 15s linear infinite both; }
-
-.spin-20s {
-  -webkit-animation: spin 20s linear infinite both;
-  animation: spin 20s linear infinite both; }
-
-.spin-30s {
-  -webkit-animation: spin 30s linear infinite both;
-  animation: spin 30s linear infinite both; }
-
-.spin-45s {
-  -webkit-animation: spin 45s linear infinite both;
-  animation: spin 45s linear infinite both; }
-
-.spin-60s {
-  -webkit-animation: spin 60s linear infinite both;
-  animation: spin 60s linear infinite both; }
-
-.spin-120s {
-  -webkit-animation: spin 120s linear infinite both;
-  animation: spin 120s linear infinite both; }
-
-.spin-240s {
-  -webkit-animation: spin 240s linear infinite both;
-  animation: spin 240s linear infinite both; }
-
-.spin-480s {
-  -webkit-animation: spin 480s linear infinite both;
-  animation: spin 480s linear infinite both; }
-
-.spin-rev-200ms {
-  -webkit-animation: spin-rev 200ms linear infinite both;
-  animation: spin-rev 200ms linear infinite both; }
-
-.spin-rev-400ms {
-  -webkit-animation: spin-rev 400ms linear infinite both;
-  animation: spin-rev 400ms linear infinite both; }
-
-.spin-rev-600ms {
-  -webkit-animation: spin-rev 600ms linear infinite both;
-  animation: spin-rev 600ms linear infinite both; }
-
-.spin-rev-1s {
-  -webkit-animation: spin-rev 1s linear infinite both;
-  animation: spin-rev 1s linear infinite both; }
-
-.spin-rev-2s {
-  -webkit-animation: spin-rev 2s linear infinite both;
-  animation: spin-rev 2s linear infinite both; }
-
-.spin-rev-3s {
-  -webkit-animation: spin-rev 3s linear infinite both;
-  animation: spin-rev 3s linear infinite both; }
-
-.spin-rev-4s {
-  -webkit-animation: spin-rev 4s linear infinite both;
-  animation: spin-rev 4s linear infinite both; }
-
-.spin-rev-5s {
-  -webkit-animation: spin-rev 5s linear infinite both;
-  animation: spin-rev 5s linear infinite both; }
-
-.spin-rev-6s {
-  -webkit-animation: spin-rev 6s linear infinite both;
-  animation: spin-rev 6s linear infinite both; }
-
-.spin-rev-7s {
-  -webkit-animation: spin-rev 7s linear infinite both;
-  animation: spin-rev 7s linear infinite both; }
-
-.spin-rev-10s {
-  -webkit-animation: spin-rev 10s linear infinite both;
-  animation: spin-rev 10s linear infinite both; }
-
-.spin-rev-12s {
-  -webkit-animation: spin-rev 12s linear infinite both;
-  animation: spin-rev 12s linear infinite both; }
-
-.spin-rev-15s {
-  -webkit-animation: spin-rev 15s linear infinite both;
-  animation: spin-rev 15s linear infinite both; }
-
-.spin-rev-20s {
-  -webkit-animation: spin-rev 20s linear infinite both;
-  animation: spin-rev 20s linear infinite both; }
-
-.spin-rev-30s {
-  -webkit-animation: spin-rev 30s linear infinite both;
-  animation: spin-rev 30s linear infinite both; }
-
-.spin-rev-45s {
-  -webkit-animation: spin-rev 45s linear infinite both;
-  animation: spin-rev 45s linear infinite both; }
-
-.spin-rev-60s {
-  -webkit-animation: spin-rev 60s linear infinite both;
-  animation: spin-rev 60s linear infinite both; }
-
-.spin-rev-120s {
-  -webkit-animation: spin-rev 120s linear infinite both;
-  animation: spin-rev 120s linear infinite both; }
-
-.spin-rev-240s {
-  -webkit-animation: spin-rev 240s linear infinite both;
-  animation: spin-rev 240s linear infinite both; }
-
-.spin-rev-480s {
-  -webkit-animation: spin-rev 480s linear infinite both;
-  animation: spin-rev 480s linear infinite both; }
-
-.scale-up-200ms:hover {
-  -webkit-animation: scale-up 200ms linear both;
-  animation: scale-up 200ms linear both; }
-
-.scale-up-200ms {
-  -webkit-animation: scale-up-rev 100ms linear both;
-  animation: scale-up-rev 100ms linear both; }
-
-.scale-up-400ms:hover {
-  -webkit-animation: scale-up 400ms linear both;
-  animation: scale-up 400ms linear both; }
-
-.scale-up-400ms {
-  -webkit-animation: scale-up-rev 100ms linear both;
-  animation: scale-up-rev 100ms linear both; }
-
-.flip-right-200ms:hover {
-  -webkit-animation: flip-right 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  animation: flip-right 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
-
-.flip-right-200ms {
-  -webkit-animation: flip-left 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  animation: flip-left 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
-
-.flip-right-400ms:hover {
+.flip-right:hover {
   -webkit-animation: flip-right 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: flip-right 400ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
 
-.flip-right-400ms {
+.flip-right {
   -webkit-animation: flip-left 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: flip-left 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955) both; }
 

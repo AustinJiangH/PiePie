@@ -44,6 +44,16 @@
 }
 
 
+.spin {
+    -webkit-animation: spin 2s linear infinite both;
+    animation: spin 2s linear infinite both;
+}
+
+.spin-rev {
+    -webkit-animation: spin-rev 2s linear infinite both;
+    animation: spin-rev 2s linear infinite both;
+}
+
 //
 @-webkit-keyframes scale-up {
     0% {
@@ -106,6 +116,14 @@
     }
 }
 
+.scale-up:hover {
+    -webkit-animation: scale-up 400ms linear both;
+    animation: scale-up 400ms linear both;
+}
+.scale-up {
+    -webkit-animation: scale-up-rev 100ms linear both;
+    animation: scale-up-rev 100ms linear both;
+}
 
 //
 @-webkit-keyframes flip-right {
@@ -153,73 +171,12 @@
 
 
 
-$durations:(
-        200ms,
-        400ms,
-        600ms,
-        1s,
-        2s,
-        3s,
-        4s,
-        5s,
-        6s,
-        7s,
-        10s,
-        12s,
-        15s,
-        20s,
-        30s,
-        45s,
-        60s,
-        120s,
-        240s,
-        480s,
-);
-
-$transition-time: 100ms;
-
-
-
-
-@each $duration in $durations{
-    .spin-#{$duration} {
-        -webkit-animation: spin $duration linear infinite both;
-        animation: spin $duration linear infinite both;
-    }
+.flip-right:hover {
+    -webkit-animation: flip-right 400ms cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: flip-right 400ms cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
-
-@each $duration in $durations{
-    .spin-rev-#{$duration} {
-        -webkit-animation: spin-rev $duration linear infinite both;
-        animation: spin-rev $duration linear infinite both;
-    }
-}
-
-$durations2:(
-        200ms,
-        400ms,
-);
-
-@each $duration in $durations2{
-    .scale-up-#{$duration}:hover {
-        -webkit-animation: scale-up $duration linear both;
-        animation: scale-up $duration linear both;
-    }
-    .scale-up-#{$duration} {
-        -webkit-animation: scale-up-rev 100ms linear both;
-        animation: scale-up-rev 100ms linear both;
-    }
-}
-
-
-@each $duration in $durations2{
-    .flip-right-#{$duration}:hover {
-        -webkit-animation: flip-right $duration cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-        animation: flip-right $duration cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-    }
-    .flip-right-#{$duration} {
-        -webkit-animation: flip-left 200ms cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-        animation: flip-left 200ms cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-    }
+.flip-right {
+    -webkit-animation: flip-left 200ms cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: flip-left 200ms cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
 
