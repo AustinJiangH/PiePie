@@ -72,7 +72,7 @@ let Roundie = {
             '2rem accent-2 amber',
             '2rem accent-2 deep-orange',
         ],
-        mobileScaleRate: 2,
+        mobileScaleRate: 1.66,
         popDuration: 400,
     },
 

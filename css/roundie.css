@@ -248,7 +248,8 @@ body {
   z-index: 999; }
 
 .loading-screen-pole {
-  top: 36% !important; }
+  top: 36% !important;
+  animation: loading-pole ease 12s infinite both; }
 
 .roundie-loading-text {
   position: absolute;
