@@ -27,7 +27,7 @@ body {
   top: 50%;
   left: 50%;
   height: 2px;
-  background-color: #00b0ff;
+  background-color: #64ffda;
   transform-origin: left center;
   transition: linear;
   transition-duration: 200ms;
@@ -72,7 +72,7 @@ body {
 .pie {
   z-index: 10;
   position: absolute;
-  background-color: #67ff15; }
+  background-color: #18ffff; }
 
 .z-depth-0 {
   box-shadow: none !important; }
@@ -268,10 +268,6 @@ body {
     transform: rotate(-360deg); } }
 .loading-screen-pole {
   animation: loading-pole ease 12s infinite both; }
-
-.roundie-loading {
-  -webkit-transition: ease 1000ms;
-  transition: ease 1000ms; }
 
 /*! normalize.sass v3.0.3 | MIT License | github.com/necolas/normalize.sass */
 /**

@@ -12,11 +12,16 @@
     <!--<script src="js/jquery-3.1.1.js"></script>-->
     <!--<script src="js/jquery.mousewheel.min.js"></script>-->
     <script src="js/roundie.js"></script>
+    <script>
+        Roundie.loading();
+    </script>
     <style>
     </style>
 </head>
 <body>
-
+<script>
+    Roundie.loading();
+</script>
 <section class="container tree">
     <div class="pole" id="spinner" style="animation: spin 2s ease infinite both">
         <div class="axis-0 20rem">
@@ -69,7 +74,7 @@
         </div>
     </div>
     <script>
-        $('.tree div').addClass('z-depth-2')
+
     </script>
 </section>
 
@@ -133,12 +138,11 @@
             ],
             pies: '5px cyan accent-4',
         };
-        Roundie.loading();
+
         Roundie.addNodes(document.querySelectorAll('.section-1'), options1);
         Roundie.addNodes(document.querySelectorAll('.node-1'), options2);
         Roundie.addNodes(document.querySelectorAll('.node-2'), options3);
         document.querySelector('.pole-0').style.animationDuration = '30s';
-        document.querySelector('.pole-1').style.animationDuration = '30s';
     </script>
 </section>
 
@@ -147,9 +151,6 @@
     Roundie.init();
     Roundie.endLoading();
 </script>
-
-
-
 </body>
 
 </html>

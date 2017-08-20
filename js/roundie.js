@@ -5,32 +5,32 @@
 let loadingOptions = {
     pole:'loading-screen-pole',
     axises: [
-        [0,  '10rem  roundie-loading loading-axis-0  '],
-        [1,  '5rem  roundie-loading loading-axis-1  '],
-        [2,  '5rem  roundie-loading loading-axis-2  '],
-        [3,  '5rem  roundie-loading loading-axis-3  '],
-        [4,  '5rem  roundie-loading loading-axis-4  '],
-        [5,  '5rem  roundie-loading loading-axis-5  '],
-        [6,  '5rem  roundie-loading loading-axis-6  '],
-        [7,  '5rem  roundie-loading loading-axis-7  '],
-        [8,  '5rem  roundie-loading loading-axis-8  '],
-        [9,  '5rem  roundie-loading loading-axis-9  '],
-        [10, '5rem  roundie-loading loading-axis-10 '],
-        [11, '5rem  roundie-loading loading-axis-11 ']
+        [0,  '5rem loading-axis-0 '],
+        [1,  '5rem loading-axis-1 '],
+        [2,  '5rem loading-axis-2 '],
+        [3,  '5rem loading-axis-3 '],
+        [4,  '5rem loading-axis-4 '],
+        [5,  '5rem loading-axis-5 '],
+        [6,  '5rem loading-axis-6 '],
+        [7,  '5rem loading-axis-7 '],
+        [8,  '5rem loading-axis-8 '],
+        [9,  '5rem loading-axis-9 '],
+        [10, '5rem loading-axis-10'],
+        [11, '5rem loading-axis-11']
     ],
     pies: [
-        '40px accent-2 roundie-loading loading-pie-0   red  ',
-        '25px accent-2 roundie-loading loading-pie-1   grey ',
-        '25px accent-2 roundie-loading loading-pie-2   grey ',
-        '25px accent-2 roundie-loading loading-pie-3   grey ',
-        '25px accent-2 roundie-loading loading-pie-4   grey ',
-        '25px accent-2 roundie-loading loading-pie-5   grey ',
-        '25px accent-2 roundie-loading loading-pie-6   grey ',
-        '25px accent-2 roundie-loading loading-pie-7   grey ',
-        '25px accent-2 roundie-loading loading-pie-8   grey ',
-        '25px accent-2 roundie-loading loading-pie-9   grey ',
-        '25px accent-2 roundie-loading loading-pie-10  grey ',
-        '25px accent-2 roundie-loading loading-pie-11  grey ',
+        '25px accent-2 loading-pie-0  red',
+        '25px accent-2 loading-pie-1  pink',
+        '25px accent-2 loading-pie-2  purple',
+        '25px accent-2 loading-pie-3  indigo',
+        '25px accent-2 loading-pie-4  blue',
+        '25px accent-2 loading-pie-5  cyan',
+        '25px accent-2 loading-pie-6  teal',
+        '25px accent-2 loading-pie-7  green',
+        '25px accent-2 loading-pie-8  lime',
+        '25px accent-2 loading-pie-9  yellow',
+        '25px accent-2 loading-pie-10 amber',
+        '25px accent-2 loading-pie-11 deep-orange',
     ],
 
 };
@@ -41,22 +41,36 @@ const Roundie = {
     options: {
         pole:'',
         axises: [
-            [0,  '8rem '],
-            [1,  '8rem '],
-            [2,  '8rem '],
-            [3,  '8rem '],
-            [4,  '8rem '],
-            [5,  '8rem '],
-            [6,  '8rem '],
-            [7,  '8rem '],
-            [8,  '8rem '],
-            [9,  '8rem '],
-            [10, '8rem '],
-            [11, '8rem ']
+            [0,  '5rem'],
+            [1,  '5rem'],
+            [2,  '5rem'],
+            [3,  '5rem'],
+            [4,  '5rem'],
+            [5,  '5rem'],
+            [6,  '5rem'],
+            [7,  '5rem'],
+            [8,  '5rem'],
+            [9,  '5rem'],
+            [10, '5rem'],
+            [11, '5rem']
         ],
-        pies: '20px green',
-
+        pies: [
+            '25px accent-2 red',
+            '25px accent-2 pink',
+            '25px accent-2 purple',
+            '25px accent-2 indigo',
+            '25px accent-2 blue',
+            '25px accent-2 cyan',
+            '25px accent-2 teal',
+            '25px accent-2 green',
+            '25px accent-2 lime',
+            '25px accent-2 yellow',
+            '25px accent-2 amber',
+            '25px accent-2 deep-orange',
+        ],
     },
+
+    isMobile: /moblie/i.test(navigator.userAgent),
 
     init:() =>{
         let allAxises = [
@@ -98,6 +112,7 @@ const Roundie = {
                 for ( let j = 0; j < axisElems.length; j++){
                     if(axisElems[j].className.match(/[0-9]+rem/)){
                         let remLen =  Number(axisElems[j].className.match(/[0-9]+rem/)[0].slice(0,-3));
+                        if(Roundie.isMobile){remLen = remLen/2}
                         let x = remLen*axisRates[i][0];
                         let y = remLen*axisRates[i][1];
                         axisElems[j].style.transform = `translate(${x}rem, ${y}rem)`;
@@ -141,6 +156,7 @@ const Roundie = {
                     let radius;
                     if(unit === 'rem'){
                         radius = Number(pie.className.match(/[0-9]+rem|[0-9]+px/)[0].slice(0,-3));
+                        if(Roundie.isMobile){radius = radius/2}
                     }else if(unit === 'px'){
                         radius = Number(pie.className.match(/[0-9]+rem|[0-9]+px/)[0].slice(0,-2));
                     }
@@ -166,36 +182,7 @@ const Roundie = {
         loadingScreen.id = 'roundie-loading-screen';
         Roundie.addNode(loadingScreen, loadingOptions);
         Roundie.init();
-        let loadingColors = [
-            'red',
-            'pink',
-            'purple',
-            'indigo',
-            'blue',
-            'cyan',
-            'teal',
-            'green',
-            'lime',
-            'yellow',
-            'amber',
-            '1deep-orange',
-        ];
-
         document.querySelector('body').appendChild(loadingScreen);
-        for(let i = 0; i < 12; i++){
-            let a = i % 12;
-            let b = (i % 12) + 1;
-            setTimeout(()=>{
-                // former
-                document.querySelector(`.loading-axis-${a}`).className = document.querySelector(`.loading-axis-${a}`).className.replace(/10rem/,'5rem');
-                document.querySelector(`.loading-pie-${a}`).className = document.querySelector(`.loading-pie-${a}`).className.replace(/40px/, '25px');
-                // next
-                document.querySelector(`.loading-axis-${b}`).className = document.querySelector(`.loading-axis-${b}`).className.replace(/5rem/,'10rem');
-                document.querySelector(`.loading-pie-${b}`).className = document.querySelector(`.loading-pie-${b}`).className.replace(/grey/, loadingColors[b]).replace(/25px/, '40px');
-
-                Roundie.init();
-            },i*1000);
-        }
     },
 
     endLoading:()=>{
@@ -206,9 +193,7 @@ const Roundie = {
             setTimeout(function(){
                 loadingScreen.style.display = 'none';
             },2500);
-        },11000);
-
-
+        },2000);
     },
 
     addNode: (elem, options) => {
