@@ -3,40 +3,44 @@
 * Date: 2017/08/19
 * */
 let loadingOptions = {
+
     pole:'loading-screen-pole',
+
     axises: [
-        [0,  '5rem loading-axis-0 '],
-        [1,  '5rem loading-axis-1 '],
-        [2,  '5rem loading-axis-2 '],
-        [3,  '5rem loading-axis-3 '],
-        [4,  '5rem loading-axis-4 '],
-        [5,  '5rem loading-axis-5 '],
-        [6,  '5rem loading-axis-6 '],
-        [7,  '5rem loading-axis-7 '],
-        [8,  '5rem loading-axis-8 '],
-        [9,  '5rem loading-axis-9 '],
-        [10, '5rem loading-axis-10'],
-        [11, '5rem loading-axis-11']
-    ],
-    pies: [
-        '25px accent-2 loading-pie-0  red',
-        '25px accent-2 loading-pie-1  pink',
-        '25px accent-2 loading-pie-2  purple',
-        '25px accent-2 loading-pie-3  indigo',
-        '25px accent-2 loading-pie-4  blue',
-        '25px accent-2 loading-pie-5  cyan',
-        '25px accent-2 loading-pie-6  teal',
-        '25px accent-2 loading-pie-7  green',
-        '25px accent-2 loading-pie-8  lime',
-        '25px accent-2 loading-pie-9  yellow',
-        '25px accent-2 loading-pie-10 amber',
-        '25px accent-2 loading-pie-11 deep-orange',
+        [0,  '6rem loading-axis-0 '],
+        [1,  '6rem loading-axis-1 '],
+        [2,  '6rem loading-axis-2 '],
+        [3,  '6rem loading-axis-3 '],
+        [4,  '6rem loading-axis-4 '],
+        [5,  '6rem loading-axis-5 '],
+        [6,  '6rem loading-axis-6 '],
+        [7,  '6rem loading-axis-7 '],
+        [8,  '6rem loading-axis-8 '],
+        [9,  '6rem loading-axis-9 '],
+        [10, '6rem loading-axis-10'],
+        [11, '6rem loading-axis-11']
     ],
 
+    pies: [
+        '2rem accent-2 loading-pie-0  red',
+        '2rem accent-2 loading-pie-1  pink',
+        '2rem accent-2 loading-pie-2  purple',
+        '2rem accent-2 loading-pie-3  indigo',
+        '2rem accent-2 loading-pie-4  blue',
+        '2rem accent-2 loading-pie-5  cyan',
+        '2rem accent-2 loading-pie-6  teal',
+        '2rem accent-2 loading-pie-7  green',
+        '2rem accent-2 loading-pie-8  lime',
+        '2rem accent-2 loading-pie-9  yellow',
+        '2rem accent-2 loading-pie-10 amber',
+        '2rem accent-2 loading-pie-11 deep-orange',
+    ],
+
+    text: '',
 };
 
 
-const Roundie = {
+let Roundie = {
 
     options: {
         pole:'',
@@ -55,24 +59,29 @@ const Roundie = {
             [11, '5rem']
         ],
         pies: [
-            '25px accent-2 red',
-            '25px accent-2 pink',
-            '25px accent-2 purple',
-            '25px accent-2 indigo',
-            '25px accent-2 blue',
-            '25px accent-2 cyan',
-            '25px accent-2 teal',
-            '25px accent-2 green',
-            '25px accent-2 lime',
-            '25px accent-2 yellow',
-            '25px accent-2 amber',
-            '25px accent-2 deep-orange',
+            '2rem accent-2 red',
+            '2rem accent-2 pink',
+            '2rem accent-2 purple',
+            '2rem accent-2 indigo',
+            '2rem accent-2 blue',
+            '2rem accent-2 cyan',
+            '2rem accent-2 teal',
+            '2rem accent-2 green',
+            '2rem accent-2 lime',
+            '2rem accent-2 yellow',
+            '2rem accent-2 amber',
+            '2rem accent-2 deep-orange',
         ],
+        mobileScaleRate: 2,
+        popDuration: 400,
     },
 
-    isMobile: /moblie/i.test(navigator.userAgent),
+    isMobile: /Android|iPhone|Mobile/i.test(navigator.userAgent),
+
 
     init:() =>{
+
+        // 12 directions
         let allAxises = [
                 "axis-0" ,
                 "axis-1" ,
@@ -87,6 +96,8 @@ const Roundie = {
                 "axis-10",
                 "axis-11",
             ];
+
+        // rate for axis x and axis y
         let axisRates = [
             [0, -1],
             [0.5, -0.86602540378445],
@@ -110,31 +121,61 @@ const Roundie = {
             let axisElems = document.querySelectorAll(`.${allAxises[i]}`);
             if(axisElems){
                 for ( let j = 0; j < axisElems.length; j++){
-                    if(axisElems[j].className.match(/[0-9]+rem/)){
-                        let remLen =  Number(axisElems[j].className.match(/[0-9]+rem/)[0].slice(0,-3));
-                        if(Roundie.isMobile){remLen = remLen/2}
-                        let x = remLen*axisRates[i][0];
-                        let y = remLen*axisRates[i][1];
-                        axisElems[j].style.transform = `translate(${x}rem, ${y}rem)`;
+                    if(axisElems[j].className.match(/[0-9]+rem|[0-9]+px/)){
 
-                        // add lines
-                        if(axisElems[j].className.match(/line/)){
-                            let string = document.createElement('div');
-                            string.className += 'string';
-                            string.style.width = `${remLen}rem`;
-                            axisElems[j].appendChild(string);
+                        // get unit of radius
+                        let unit = /rem/.test(axisElems[j].className.match(/[0-9]+rem|[0-9]+px/)[0]) ? 'rem' : 'px';
+
+                        // get length of the axis
+                        let length;
+                        if(unit === 'rem'){
+                            length =  Number(axisElems[j].className.match(/[0-9]+rem/)[0].slice(0,-3));
+                            if(Roundie.isMobile){
+                                length = length/Roundie.options.mobileScaleRate;
+                            }
+                        }else if(unit === 'px'){
+                            length =  Number(axisElems[j].className.match(/[0-9]+px/)[0].slice(0,-2));
                         }
-                    }else if(axisElems[j].className.match(/[0-9]+px/)){
-                        let pxLen = Number(axisElems[j].className.match(/[0-9]+px/)[0].slice(0,-2));
-                        let x = pxLen*axisRates[i][0];
-                        let y = pxLen*axisRates[i][1];
-                        axisElems[j].style.transform = `translate(${x}px, ${y}px)`;
+
+                        // compute length on x and y
+                        let x = length*axisRates[i][0];
+                        let y = length*axisRates[i][1];
+
+
+                        // add style
+                        if(/pop/.test(axisElems[j].className)){
+                            axisElems[j].parentNode.addEventListener('mouseover', ()=>{
+                                let invisibleElem = document.createElement('div');
+                                invisibleElem.className += 'invisible-pie pie';
+                                invisibleElem.style.width = `${length*1.7}${unit}`;
+                                invisibleElem.style.height = `${length*1.7}${unit}`;
+                                invisibleElem.style.borderRadius = `${length}${unit}`;
+                                invisibleElem.style.top = `${length*-0.85}${unit}`;
+                                invisibleElem.style.left = `${length*-0.85}${unit}`;
+                                invisibleElem.addEventListener('mouseover',()=>{
+                                    axisElems[j].style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
+                                });
+                                axisElems[j].parentNode.appendChild(invisibleElem);
+                                axisElems[j].style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
+                            });
+                            axisElems[j].parentNode.addEventListener('mouseout', ()=>{
+                                setTimeout(()=>{
+                                    let invisibleElem2 = axisElems[j].parentNode.querySelector('.invisible-pie');
+                                    axisElems[j].parentNode.removeChild(invisibleElem2);
+                                },500);
+                                axisElems[j].style.transform = `translate(0, 0) rotate(270deg)`;
+                            });
+
+
+                        }else{
+                            axisElems[j].style.transform = `translate(${x}${unit}, ${y}${unit})`;
+                        }
 
                         // add lines
                         if(axisElems[j].className.match(/line/)){
                             let string = document.createElement('div');
                             string.className += 'string';
-                            string.style.width = `${pxLen}px`;
+                            string.style.width = `${length}${unit}`;
                             axisElems[j].appendChild(string);
                         }
                     }
@@ -156,7 +197,7 @@ const Roundie = {
                     let radius;
                     if(unit === 'rem'){
                         radius = Number(pie.className.match(/[0-9]+rem|[0-9]+px/)[0].slice(0,-3));
-                        if(Roundie.isMobile){radius = radius/2}
+                        if(Roundie.isMobile){radius = radius/Roundie.options.mobileScaleRate}
                     }else if(unit === 'px'){
                         radius = Number(pie.className.match(/[0-9]+rem|[0-9]+px/)[0].slice(0,-2));
                     }
@@ -174,15 +215,18 @@ const Roundie = {
                 }
             }
         }
-
     },
 
     loading:()=>{
         let loadingScreen =  document.createElement('div');
         loadingScreen.id = 'roundie-loading-screen';
+        let text = document.createElement('div');
+        text.innerHTML = loadingOptions.text;
+        text.className += 'roundie-loading-text';
+        loadingScreen.appendChild(text);
         Roundie.addNode(loadingScreen, loadingOptions);
         Roundie.init();
-        document.querySelector('body').appendChild(loadingScreen);
+        document.body.appendChild(loadingScreen);
     },
 
     endLoading:()=>{
