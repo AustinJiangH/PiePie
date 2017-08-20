@@ -6,18 +6,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Ausesa">
     <meta name="description" content="roundie.css">
-    
+
     <link rel="shortcut icon" href="favicon.ico">
 
     <!--roundie.css-->
     <link rel="stylesheet" href="css/roundie.css">
 
+    <!--font-awesome-->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <!--roundie.js-->
     <script src="js/roundie.js"></script>
 
     <style>
+        /*------- gereral --------*/
+        ::selection{
+            background-color: #d81b60;
+        }
+
         .body{
             font-family: Arial;
+        }
+
+        /*-------- section-index --------*/
+        @keyframes breath{
+            0%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(1.15);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+
+        @keyframes spinner {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner{
+            animation: spinner 5s cubic-bezier(0.65, 0.79, 0, 2.15) infinite both;
+        }
+
+        .section-index{
+            background-color: #eee;
+        }
+        
+        .section-index .pole-pie-0{
+            z-index: 11;
+            cursor: pointer;
+            -webkit-animation: breath 1.5s cubic-bezier(0.18, 0.36, 0.58, 0.97) infinite both;
+            animation: breath 1.5s cubic-bezier(0.18, 0.36, 0.58, 0.97) infinite both;
+        }
+
+        .section-index .pole-pie-1{
+            z-index:10;
+            cursor: pointer;
+            -webkit-animation: spinner 5s cubic-bezier(0.26, 0.86, 0.14, 1.59) infinite both;
+            animation: spinner 5s cubic-bezier(0.26, 0.86, 0.14, 1.59) infinite both;
+        }
+
+        .section-index .node-1{
+            cursor: pointer;
+            font-size: 3.3rem;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 767px){
+            .section-index .node-1{
+                font-size: 2.48rem;
+            }
         }
     </style>
 
@@ -26,131 +90,88 @@
 <body>
 
 <script>
+    Roundie.options.mobileScaleRate = 1.333;
     loadingOptions.text = 'Roundie.css';
     Roundie.loading();
 </script>
 
-<section class="container tree">
-    <div class="pole" id="spinner" style="animation: spin 2s ease infinite both">
-        <div class="axis-0 20rem">
-            <div class="pie 10rem yellow" style="opacity: 0.5; " ></div>
-        </div>
-    </div>
-    <div class="pole ">
-        <div class="pie 6px yellow scale-up"></div>
-        <div class="axis-0 6rem line ">
-            <div class="pie 2rem green scale-up"></div>
-            <div class="pole">
-                <div class="axis-2 4rem">
-                    <div class="pie 1rem blue"></div>
-                </div>
-                <div class="axis-6 4rem">
-                    <div class="pie 1rem blue"></div>
-                </div>
-                <div class="axis-10 4rem">
-                    <div class="pie 1rem blue"></div>
+
+<main>
+    <section class="container section-index">
+
+        <div class="pole">
+            <div class="pie 5rem white pole-pie-0"></div>
+
+            <!-- white pies-->
+            <div class="axis-0 12rem pop">
+                <div class="pie 3rem white node-1 scale-up z-depth-1">1</div>
+                <!-- surrounding the white nodes -->
+                <div class="pole spinner">
+                    <div class="axis-0 5rem">
+                        <div class="pie 7px black"></div>
+                    </div>
+                    <div class="axis-4 5rem">
+                        <div class="pie 7px black"></div>
+                    </div>
+                    <div class="axis-8 5rem">
+                        <div class="pie 7px black"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="axis-4 6rem line">
-            <div class="pie 2rem green flip-right"></div>
-            <div class="pole">
-                <div class="axis-2 4rem">
-                    <div class="pie 1rem blue"></div>
-                </div>
-                <div class="axis-6 4rem">
-                    <div class="pie 1rem blue"></div>
-                </div>
-                <div class="axis-10 4rem">
-                    <div class="pie 1rem blue"></div>
+
+            <!-- white pies-->
+            <div class="axis-4 12rem pop">
+                <div class="pie 3rem white node-1 scale-up z-depth-1">2</div>
+                <!-- surrounding the white nodes -->
+                <div class="pole spinner">
+                    <div class="axis-0 5rem">
+                        <div class="pie 7px black"></div>
+                    </div>
+                    <div class="axis-4 5rem">
+                        <div class="pie 7px black"></div>
+                    </div>
+                    <div class="axis-8 5rem">
+                        <div class="pie 7px black"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="axis-8 6rem line">
-            <div class="pie 2rem green scale-up"></div>
-            <div class="pole">
-                <div class="axis-2 4rem">
-                    <div class="pie 1rem blue"></div>
-                </div>
-                <div class="axis-6 4rem">
-                    <div class="pie 1rem blue"></div>
-                </div>
-                <div class="axis-10 4rem">
-                    <div class="pie 1rem blue"></div>
+
+            <!-- white pies-->
+            <div class="axis-8 12rem pop">
+                <div class="pie 3rem white node-1 scale-up z-depth-1">3</div>
+                <!-- surrounding the white nodes -->
+                <div class="pole spinner">
+                    <div class="axis-0 5rem">
+                        <div class="pie 7px black"></div>
+                    </div>
+                    <div class="axis-4 5rem">
+                        <div class="pie 7px black"></div>
+                    </div>
+                    <div class="axis-8 5rem">
+                        <div class="pie 7px black"></div>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </div>
-    <script>
+        <div class="pole pole-pie-1">
+            <div class="pie 8rem black"></div>
+            <div class="axis-2 21rem pop">
+                <div class="pie 10px grey darken-2 node-1 scale-up z-depth-1"></div>
+            </div>
+            <div class="axis-6 21rem pop">
+                <div class="pie 10px grey darken-2 node-1 scale-up z-depth-1"></div>
+            </div>
+            <div class="axis-10 21rem pop">
+                <div class="pie 10px grey darken-2 node-1 scale-up z-depth-1"></div>
+            </div>
+        </div>
+        <div class="pole">
 
-    </script>
-</section>
 
-<section class="container section-1">
-    <script>
-        let options1 = {
-            pole:'pole-0 spin',
-            axises: [
-                [0,  '15rem node-1 line'],
-//                [1,  '15rem node-1 line'],
-                [2,  '15rem node-1 line'],
-//                [3,  '15rem node-1 line'],
-                [4,  '15rem node-1 line'],
-//                [5,  '15rem node-1 line'],
-                [6,  '15rem node-1 line'],
-//                [7,  '15rem node-1 line'],
-                [8,  '15rem node-1 line'],
-//                [9,  '15rem node-1 line'],
-                [10, '15rem node-1 line'],
-//                [11, '15rem node-1 line']
-            ],
-            pies: '2rem cyan',
-        };
-
-        let options2 = {
-            pole:'spin-rev pole-1',
-            axises: [
-                [0,  '4rem node-2 line '],
-                [1,  '4rem node-2 line '],
-                [2,  '4rem node-2 line '],
-                [3,  '4rem node-2 line '],
-                [4,  '4rem node-2 line '],
-                [5,  '4rem node-2 line '],
-                [6,  '4rem node-2 line '],
-                [7,  '4rem node-2 line '],
-                [8,  '4rem node-2 line '],
-                [9,  '4rem node-2 line '],
-                [10, '4rem node-2 line '],
-                [11, '4rem node-2 line ']
-            ],
-            pies: '1rem cyan accent-2',
-        };
-
-        let options3 = {
-            pole:'',
-            axises: [
-                [0,  '20px node-3 line '],
-                [1,  '20px node-3 line '],
-                [2,  '20px node-3 line '],
-                [3,  '20px node-3 line '],
-                [4,  '20px node-3 line '],
-                [5,  '20px node-3 line '],
-                [6,  '20px node-3 line '],
-                [7,  '20px node-3 line '],
-                [8,  '20px node-3 line '],
-                [9,  '20px node-3 line '],
-                [10, '20px node-3 line '],
-                [11, '20px node-3 line ']
-            ],
-            pies: '5px cyan accent-4',
-        };
-
-        Roundie.addNodes(document.querySelectorAll('.section-1'), options1);
-        Roundie.addNodes(document.querySelectorAll('.node-1'), options2);
-        Roundie.addNodes(document.querySelectorAll('.node-2'), options3);
-        document.querySelector('.pole-0').style.animationDuration = '30s';
-    </script>
-</section>
+        </div>
+    </section>
+</main>
 
 <script>
     Roundie.init();
