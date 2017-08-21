@@ -471,7 +471,27 @@ let Roundie = {
             let node = nodes[i];
             Roundie.addNode(node, options)
         }
-    }
+    },
+
+    pop: (popWords)=>{
+        let popPosition = document.querySelector('#pop-position');
+        if(!popPosition){
+            popPosition = document.createElement('div');
+            popPosition.id = 'pop-position';
+            document.body.appendChild(popPosition);
+        }
+        let popWindow = document.createElement('div');
+        popWindow.className += ' pop-window pop-in ';
+        popWindow.innerHTML = popWords;
+        popPosition.appendChild(popWindow);
+        setTimeout(()=>{
+            popWindow.className += ' pop-window pop-out ';
+        },5000);
+        setTimeout(()=>{
+            popWindow.style.display = 'none';
+        },5300);
+
+    },
 };
 
 window.Roundie = Roundie;
