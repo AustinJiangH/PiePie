@@ -59,29 +59,32 @@
         }
         
         .section-index .pole-pie-0{
-            z-index: 11;
             cursor: pointer;
             -webkit-animation: breath 1.5s cubic-bezier(0.18, 0.36, 0.58, 0.97) infinite both;
             animation: breath 1.5s cubic-bezier(0.18, 0.36, 0.58, 0.97) infinite both;
         }
 
         .section-index .pole-pie-1{
-            z-index:10;
             cursor: pointer;
-            -webkit-animation: spinner 5s cubic-bezier(0.26, 0.86, 0.14, 1.59) infinite both;
-            animation: spinner 5s cubic-bezier(0.26, 0.86, 0.14, 1.59) infinite both;
+            -webkit-animation: spinner 3s cubic-bezier(0.26, 0.86, 0.14, 1.59) infinite both;
+            animation: spinner 3s cubic-bezier(0.26, 0.86, 0.14, 1.59) infinite both;
         }
 
         .section-index .node-1{
             cursor: pointer;
-            font-size: 3.3rem;
+            font-size: 3.3rem !important;
             text-align: center;
         }
 
         @media screen and (max-width: 767px){
             .section-index .node-1{
-                font-size: 2.48rem;
+                font-size: 2.48rem !important;
             }
+        }
+
+        /*-------- section-piles ---------*/
+        .section-piles .blank{
+            background-color: #fff !important;
         }
 
     </style>
@@ -100,27 +103,14 @@
 <main>
     <section class="container section-index">
 
-        <!-- three decoration dots -->
-        <div class="pole pole-pie-1">
-            <div class="pie 8rem black"></div>
-            <div class="axis-2 21rem pop">
-                <div class="pie 10px grey darken-2 node-1 scale-up z-depth-1"></div>
-            </div>
-            <div class="axis-6 21rem pop">
-                <div class="pie 10px grey darken-2 node-1 scale-up z-depth-1"></div>
-            </div>
-            <div class="axis-10 21rem pop">
-                <div class="pie 10px grey darken-2 node-1 scale-up z-depth-1"></div>
-            </div>
-        </div>
-
         <!-- three main menu options -->
         <div class="pole">
+            <div class="pie 7rem black"></div>
             <div class="pie 5rem white pole-pie-0"></div>
 
             <!-- white pies-->
             <div class="axis-0 12rem pop">
-                <div class="pie 3rem white node-1 scale-up z-depth-1">1</div>
+                <div class="pie 3rem white white-pie node-1 scale-up z-depth-1">1</div>
                 <!-- surrounding the white nodes -->
                 <div class="pole spinner">
                     <div class="axis-0 5rem">
@@ -137,7 +127,7 @@
 
             <!-- white pies-->
             <div class="axis-4 12rem pop">
-                <div class="pie 3rem white node-1 scale-up z-depth-1">2</div>
+                <div class="pie 3rem white white-pie node-1 scale-up z-depth-1">2</div>
                 <!-- surrounding the white nodes -->
                 <div class="pole spinner">
                     <div class="axis-0 5rem">
@@ -154,7 +144,7 @@
 
             <!-- white pies-->
             <div class="axis-8 12rem pop">
-                <div class="pie 3rem white node-1 scale-up z-depth-1">3</div>
+                <div class="pie 3rem white white-pie node-1 scale-up z-depth-1">3</div>
                 <!-- surrounding the white nodes -->
                 <div class="pole spinner">
                     <div class="axis-0 5rem">
@@ -170,6 +160,40 @@
             </div>
 
         </div>
+
+        <!-- three decoration dots -->
+        <div class="pole pole-pie-1">
+
+            <div class="axis-2 8rem bounce-17rem">
+                <div class="pie 10px grey darken-2 node-1 scale-up z-depth-1"></div>
+            </div>
+            <div class="axis-6 8rem bounce-17rem">
+                <div class="pie 10px grey darken-2 node-1 scale-up z-depth-1"></div>
+            </div>
+            <div class="axis-10 8rem bounce-17rem">
+                <div class="pie 10px grey darken-2 node-1 scale-up z-depth-1"></div>
+            </div>
+
+        </div>
+
+        <script>
+            let pieColors1 = [
+                ' accent-2 purple ',
+                ' accent-2 cyan ',
+                ' accent-2 amber ',
+            ];
+            const nodes1 = document.querySelectorAll('.section-index .white-pie');
+            for(let i = 0; i < nodes1.length; i++){
+                let node = nodes1[i];
+                node.addEventListener('click',()=>{
+                    node.className = node.className.replace(/white/, pieColors1[i]);
+                });
+                node.addEventListener('touchstart',()=>{
+                    node.className = node.className.replace(/white/, pieColors1[i]);
+                });
+            }
+        </script>
+
 
     </section>
 
@@ -190,97 +214,115 @@
         <!-- three decoration dots -->
         <div class="pole pole-pie-1" style="z-index: 11">
             <!--big one-->
-            <div class="pie grey lighten-5 6rem node-1 scale-up z-depth-1"></div>
-            <div class="pie grey lighten-4 5rem node-1 scale-up z-depth-1"></div>
-            <div class="pie grey lighten-3 4rem node-1 scale-up z-depth-1"></div>
-            <div class="pie grey lighten-2 3rem node-1 scale-up z-depth-1"></div>
-            <div class="pie grey lighten-1 2rem node-1 scale-up z-depth-1"></div>
+            <div class="pie grey lighten-5 6rem node-1 blank scale-up z-depth-1"></div>
+            <div class="pie grey lighten-4 5rem node-1 blank scale-up z-depth-1"></div>
+            <div class="pie grey lighten-3 4rem node-1 blank scale-up z-depth-1"></div>
+            <div class="pie grey lighten-2 3rem node-1 blank scale-up z-depth-1"></div>
+            <div class="pie grey lighten-1 2rem node-1 blank scale-up z-depth-1 reset"></div>
 
             <!-- small ones-->
             <div class="axis-0 12rem ">
-                <div class="pie red accent-1 5rem node-1 scale-up z-depth-1"></div>
-                <div class="pie red accent-2 4rem node-1 scale-up z-depth-1"></div>
-                <div class="pie red accent-3 3rem node-1 scale-up z-depth-1"></div>
-                <div class="pie red accent-4 2rem node-1 scale-up z-depth-1"></div>
+                <div class="pie red accent-1 5rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie red accent-2 4rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie red accent-3 3rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie red accent-4 2rem node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-1 7rem ">
-                <div class="pie pink accent-1 35px node-1 scale-up z-depth-1"></div>
-                <div class="pie pink accent-2 25px node-1 scale-up z-depth-1"></div>
-                <div class="pie pink accent-3 15px node-1 scale-up z-depth-1"></div>
-                <div class="pie pink accent-4  5px node-1 scale-up z-depth-1"></div>
+                <div class="pie pink accent-1 35px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie pink accent-2 25px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie pink accent-3 15px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie pink accent-4  5px node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-2 12rem ">
-                <div class="pie purple accent-1 5rem node-1 scale-up z-depth-1"></div>
-                <div class="pie purple accent-2 4rem node-1 scale-up z-depth-1"></div>
-                <div class="pie purple accent-3 3rem node-1 scale-up z-depth-1"></div>
-                <div class="pie purple accent-4 2rem node-1 scale-up z-depth-1"></div>
+                <div class="pie purple accent-1 5rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie purple accent-2 4rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie purple accent-3 3rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie purple accent-4 2rem node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-3 7rem ">
-                <div class="pie indigo accent-1 35px node-1 scale-up z-depth-1"></div>
-                <div class="pie indigo accent-2 25px node-1 scale-up z-depth-1"></div>
-                <div class="pie indigo accent-3 15px node-1 scale-up z-depth-1"></div>
-                <div class="pie indigo accent-4  5px node-1 scale-up z-depth-1"></div>
+                <div class="pie indigo accent-1 35px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie indigo accent-2 25px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie indigo accent-3 15px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie indigo accent-4  5px node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-4 12rem ">
-                <div class="pie blue accent-1 5rem node-1 scale-up z-depth-1"></div>
-                <div class="pie blue accent-2 4rem node-1 scale-up z-depth-1"></div>
-                <div class="pie blue accent-3 3rem node-1 scale-up z-depth-1"></div>
-                <div class="pie blue accent-4 2rem node-1 scale-up z-depth-1"></div>
+                <div class="pie blue accent-1 5rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie blue accent-2 4rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie blue accent-3 3rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie blue accent-4 2rem node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-5 7rem ">
-                <div class="pie cyan accent-1 35px node-1 scale-up z-depth-1"></div>
-                <div class="pie cyan accent-2 25px node-1 scale-up z-depth-1"></div>
-                <div class="pie cyan accent-3 15px node-1 scale-up z-depth-1"></div>
-                <div class="pie cyan accent-4  5px node-1 scale-up z-depth-1"></div>
+                <div class="pie cyan accent-1 35px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie cyan accent-2 25px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie cyan accent-3 15px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie cyan accent-4  5px node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-6 12rem  ">
-                <div class="pie teal accent-1 5rem node-1 scale-up z-depth-1"></div>
-                <div class="pie teal accent-2 4rem node-1 scale-up z-depth-1"></div>
-                <div class="pie teal accent-3 3rem node-1 scale-up z-depth-1"></div>
-                <div class="pie teal accent-4 2rem node-1 scale-up z-depth-1"></div>
+                <div class="pie teal accent-1 5rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie teal accent-2 4rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie teal accent-3 3rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie teal accent-4 2rem node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-7 7rem ">
-                <div class="pie green accent-1 35px node-1 scale-up z-depth-1"></div>
-                <div class="pie green accent-2 25px node-1 scale-up z-depth-1"></div>
-                <div class="pie green accent-3 15px node-1 scale-up z-depth-1"></div>
-                <div class="pie green accent-4  5px node-1 scale-up z-depth-1"></div>
+                <div class="pie green accent-1 35px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie green accent-2 25px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie green accent-3 15px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie green accent-4  5px node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-8 12rem ">
-                <div class="pie lime accent-1 5rem node-1 scale-up z-depth-1"></div>
-                <div class="pie lime accent-2 4rem node-1 scale-up z-depth-1"></div>
-                <div class="pie lime accent-3 3rem node-1 scale-up z-depth-1"></div>
-                <div class="pie lime accent-4 2rem node-1 scale-up z-depth-1"></div>
+                <div class="pie lime accent-1 5rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie lime accent-2 4rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie lime accent-3 3rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie lime accent-4 2rem node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-9 7rem ">
-                <div class="pie yellow accent-1 35px node-1 scale-up z-depth-1"></div>
-                <div class="pie yellow accent-2 25px node-1 scale-up z-depth-1"></div>
-                <div class="pie yellow accent-3 15px node-1 scale-up z-depth-1"></div>
-                <div class="pie yellow accent-4  5px node-1 scale-up z-depth-1"></div>
+                <div class="pie yellow accent-1 35px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie yellow accent-2 25px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie yellow accent-3 15px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie yellow accent-4  5px node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-10 12rem ">
-                <div class="pie amber accent-1 5rem node-1 scale-up z-depth-1"></div>
-                <div class="pie amber accent-2 4rem node-1 scale-up z-depth-1"></div>
-                <div class="pie amber accent-3 3rem node-1 scale-up z-depth-1"></div>
-                <div class="pie amber accent-4 2rem node-1 scale-up z-depth-1"></div>
+                <div class="pie amber accent-1 5rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie amber accent-2 4rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie amber accent-3 3rem node-1 blank scale-up z-depth-1"></div>
+                <div class="pie amber accent-4 2rem node-1 blank scale-up z-depth-1"></div>
             </div>
 
             <div class="axis-11 7rem ">
-                <div class="pie deep-orange accent-1 35px node-1 scale-up z-depth-1"></div>
-                <div class="pie deep-orange accent-2 25px node-1 scale-up z-depth-1"></div>
-                <div class="pie deep-orange accent-3 15px node-1 scale-up z-depth-1"></div>
-                <div class="pie deep-orange accent-4  5px node-1 scale-up z-depth-1"></div>
+                <div class="pie deep-orange accent-1 35px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie deep-orange accent-2 25px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie deep-orange accent-3 15px node-1 blank scale-up z-depth-1"></div>
+                <div class="pie deep-orange accent-4  5px node-1 blank scale-up z-depth-1"></div>
             </div>
         </div>
+        <script>
+            const nodes2 = document.querySelectorAll('.section-piles .node-1');
+            for(let i = 0; i < nodes2.length; i++){
+                let node = nodes2[i];
+                node.addEventListener('mouseover',()=>{
+                    node.className = node.className.replace(/blank/, ' ');
+                });
+                node.addEventListener('touchstart',()=>{
+                    node.className = node.className.replace(/blank/, ' ');
+                });
+            }
+            document.querySelector('.section-piles .reset').addEventListener('click',()=>{
+                for(let i = 0; i < nodes.length; i++){
+                    let node = nodes[i];
+                    node.className += ' blank ';
+                }
+            });
+        </script>
     </section>
 
 </main>

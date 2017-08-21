@@ -4,4 +4,5 @@
 out
 gen
 /sass/
-old.html
+old*.html
+/old/
