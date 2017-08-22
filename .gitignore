@@ -1,8 +1,7 @@
 # IntelliJ project files
 /.idea/
-*.iml
 out
 gen
 /sass/
 old*.html
-/old/
+README.html
