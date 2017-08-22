@@ -1,10 +1,10 @@
 /*
 * Author: Austin J.
 * Date: 2017/08/19
-* Description: This JavaScript file is a supplement to Roundie.css.
-*              It works and only works with Roundie.css.
+* Description: This JavaScript file is a supplement to PiePie.css.
+*              It works and only works with PiePie.css.
 * License: All Rights Reserved (for now)
-* GitHub: https://github.com/AustinJiangH/roundie.css
+* GitHub: https://github.com/AustinJiangH/PiePie.css
 * */
 
 
@@ -71,10 +71,10 @@ function getLength(elem, unit){
         /*
          * to beautify the layout on mobile devices
          * you can set the rate before using
-         * 'Roundie.options.mobileScaleRate = 1.333'
+         * 'PiePie.options.mobileScaleRate = 1.333'
          * */
-        if(Roundie.isMobile){
-            length = length/Roundie.options.mobileScaleRate;
+        if(PiePie.isMobile){
+            length = length/PiePie.options.mobileScaleRate;
         }
     }else if(unit === 'px'){
         length =  Number(elem.className.match(/[0-9]+px/)[0].slice(0,-2));
@@ -91,10 +91,10 @@ function getBounceLength(elem, unit){
         /*
          * to beautify the layout on mobile devices
          * you can set the rate before using
-         * 'Roundie.options.mobileScaleRate = 1.333'
+         * 'PiePie.options.mobileScaleRate = 1.333'
          * */
-        if(Roundie.isMobile){
-            bounceLength = bounceLength/Roundie.options.mobileScaleRate;
+        if(PiePie.isMobile){
+            bounceLength = bounceLength/PiePie.options.mobileScaleRate;
         }
     }else if(unit === 'px'){
         bounceLength =  Number(elem.className.match(/bounce-[0-9]+px/)[0].match(/[0-9]+/)[0]);
@@ -138,13 +138,13 @@ function appendPop (elem, length, x, y, unit){
 
 function appendBounce (elem, length, bounceLength, x, y ,bx, by, unit){
     // add general style
-    elem.style.transition = `${Roundie.options.bounceDuration/2}ms ease`;
+    elem.style.transition = `${PiePie.options.bounceDuration/2}ms ease`;
 
     // add bounce line
     if(/line/.test(elem.className)){
         let string = document.createElement('div');
         string.className += 'string';
-        string.style.transition = `${Roundie.options.bounceDuration/2}ms ease`;
+        string.style.transition = `${PiePie.options.bounceDuration/2}ms ease`;
 
         // set bounce animation
         setInterval(()=>{
@@ -153,8 +153,8 @@ function appendBounce (elem, length, bounceLength, x, y ,bx, by, unit){
             setTimeout(()=>{
                 elem.style.transform = `translate(${x}${unit}, ${y}${unit})`;
                 string.style.width = `${length}${unit}`;
-            },Roundie.options.bounceDuration/2)
-        },Roundie.options.bounceDuration);
+            },PiePie.options.bounceDuration/2)
+        },PiePie.options.bounceDuration);
         elem.appendChild(string);
     } else {
 
@@ -163,14 +163,14 @@ function appendBounce (elem, length, bounceLength, x, y ,bx, by, unit){
             elem.style.transform = `translate(${x+bx}${unit}, ${y+by}${unit})`;
             setTimeout(()=>{
                 elem.style.transform = `translate(${x}${unit}, ${y}${unit})`;
-            },Roundie.options.bounceDuration/2)
-        },Roundie.options.bounceDuration);
+            },PiePie.options.bounceDuration/2)
+        },PiePie.options.bounceDuration);
     }
 }
 
 
-// Roundie Object
-let Roundie = {
+// PiePie Object
+let PiePie = {
 
     /* default, initial or sample options */
     options: {
@@ -260,9 +260,9 @@ let Roundie = {
                         /*
                          * to beautify the layout on mobile devices
                          * you can set the rate before using
-                         * 'Roundie.options.mobileScaleRate = 1.333'
+                         * 'PiePie.options.mobileScaleRate = 1.333'
                          * */
-                        if(Roundie.isMobile){radius = radius/Roundie.options.mobileScaleRate}
+                        if(PiePie.isMobile){radius = radius/PiePie.options.mobileScaleRate}
                     }else if(unit === 'px'){
                         radius = Number(pie.className.match(/[0-9]+rem|[0-9]+px/)[0].slice(0,-2));
                     }
@@ -313,7 +313,7 @@ let Roundie = {
             // translate the axises
             let axisElems = document.querySelectorAll(`.${allAxises[i]}`);
             if(axisElems){
-                Roundie.setRays(axisElems, i*30);
+                PiePie.setRays(axisElems, i*30);
             }
         }
     },
@@ -329,6 +329,7 @@ let Roundie = {
                     let ray = rays[j];
                     ray.style.height = '0px';
                     ray.style.width = '0px';
+                    ray.style.position = 'absolute';
 
                     if(ray.className.match(/[0-9]+rem|[0-9]+px/)){
                         // get unit
@@ -376,7 +377,7 @@ let Roundie = {
                         }
 
                     }else {
-                        console.error(`Roundie.js: ${ray} has no length, please add a length!`);
+                        console.error(`PiePie.js: ${ray} has no length, please add a length!`);
                     }
                 }
             }
@@ -396,29 +397,29 @@ let Roundie = {
     * NOTE: this must be called when the dom is READY !!!*/
     init:() =>{
 
-        /* call the methods of Roundie itself */
-        Roundie.setAxises();
-        Roundie.setPies();
-        Roundie.setRays();
+        /* call the methods of PiePie itself */
+        PiePie.setAxises();
+        PiePie.setPies();
+        PiePie.setRays();
     },
 
     /* create and show loading page at the beginning */
     loading:()=>{
         let loadingScreen =  document.createElement('div');
-        loadingScreen.id = 'roundie-loading-screen';
+        loadingScreen.id = 'PiePie-loading-screen';
         let text = document.createElement('div');
         text.innerHTML = loadingOptions.text;
-        text.className += 'roundie-loading-text';
+        text.className += 'PiePie-loading-text';
         loadingScreen.appendChild(text);
-        Roundie.addNodes(loadingScreen, loadingOptions);
-        Roundie.init();
+        PiePie.addNodes(loadingScreen, loadingOptions);
+        PiePie.init();
         document.body.appendChild(loadingScreen);
     },
 
     /* remove loading page */
     endLoading:()=>{
         setTimeout(()=>{
-            let loadingScreen =  document.querySelector('#roundie-loading-screen');
+            let loadingScreen =  document.querySelector('#PiePie-loading-screen');
             loadingScreen.style.animationDuration = '1500ms';
             loadingScreen.className += 'slide-top';
             setTimeout(()=>{
@@ -500,7 +501,7 @@ let Roundie = {
     },
 
     add: (elem, className)=>{
-        Roundie.addClass(elem, className);
+        PiePie.addClass(elem, className);
     },
 
     removeClass: (elem, className)=>{
@@ -515,18 +516,18 @@ let Roundie = {
     },
 
     rm: (elem, className)=>{
-        Roundie.removeClass(elem, className);
+        PiePie.removeClass(elem, className);
     },
 
     toggleClass: (elem, removeClass, addClass) => {
-        Roundie.rm(elem, removeClass);
-        Roundie.add(elem, addClass);
+        PiePie.rm(elem, removeClass);
+        PiePie.add(elem, addClass);
     },
 
     toggle: (elem, removeClass, addClass) => {
-        Roundie.toggleClass(elem, removeClass, addClass);
+        PiePie.toggleClass(elem, removeClass, addClass);
     },
 
 };
 
-window.Roundie = Roundie;
+window.PiePie = PiePie;

@@ -12,27 +12,12 @@ body {
   width: 100%;
   overflow: hidden; }
 
-.axis-0, .axis-1, .axis-2, .axis-3, .axis-4, .axis-5,
-.axis-6, .axis-7, .axis-8, .axis-9, .axis-10, .axis-11 {
-  position: absolute; }
-
 .pole {
   height: 0 !important;
   width: 0 !important;
   position: absolute;
   top: 50%;
   left: 50%; }
-
-.string {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 2px;
-  background-color: #64ffda;
-  transform-origin: left center;
-  transition: linear;
-  transition-duration: 200ms;
-  z-index: 0; }
 
 .axis-0 > .string {
   transform: rotate(90deg); }
@@ -70,2173 +55,1101 @@ body {
 .axis-11 > .string {
   transform: rotate(420deg); }
 
+.string {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 2px;
+  background-color: #64ffda;
+  transform-origin: left center;
+  transition: linear;
+  transition-duration: 200ms;
+  z-index: 0; }
+
 .pop {
   transform: translate(0, 0) rotate(270deg);
   transition: ease 400ms; }
 
 /*-------- ray --------*/
-.ray-0 {
-  position: absolute; }
-
 .ray-0 > .string {
   transform: rotate(90deg); }
-
-.ray-1 {
-  position: absolute; }
 
 .ray-1 > .string {
   transform: rotate(91deg); }
 
-.ray-2 {
-  position: absolute; }
-
 .ray-2 > .string {
   transform: rotate(92deg); }
-
-.ray-3 {
-  position: absolute; }
 
 .ray-3 > .string {
   transform: rotate(93deg); }
 
-.ray-4 {
-  position: absolute; }
-
 .ray-4 > .string {
   transform: rotate(94deg); }
-
-.ray-5 {
-  position: absolute; }
 
 .ray-5 > .string {
   transform: rotate(95deg); }
 
-.ray-6 {
-  position: absolute; }
-
 .ray-6 > .string {
   transform: rotate(96deg); }
-
-.ray-7 {
-  position: absolute; }
 
 .ray-7 > .string {
   transform: rotate(97deg); }
 
-.ray-8 {
-  position: absolute; }
-
 .ray-8 > .string {
   transform: rotate(98deg); }
-
-.ray-9 {
-  position: absolute; }
 
 .ray-9 > .string {
   transform: rotate(99deg); }
 
-.ray-10 {
-  position: absolute; }
-
 .ray-10 > .string {
   transform: rotate(100deg); }
-
-.ray-11 {
-  position: absolute; }
 
 .ray-11 > .string {
   transform: rotate(101deg); }
 
-.ray-12 {
-  position: absolute; }
-
 .ray-12 > .string {
   transform: rotate(102deg); }
-
-.ray-13 {
-  position: absolute; }
 
 .ray-13 > .string {
   transform: rotate(103deg); }
 
-.ray-14 {
-  position: absolute; }
-
 .ray-14 > .string {
   transform: rotate(104deg); }
-
-.ray-15 {
-  position: absolute; }
 
 .ray-15 > .string {
   transform: rotate(105deg); }
 
-.ray-16 {
-  position: absolute; }
-
 .ray-16 > .string {
   transform: rotate(106deg); }
-
-.ray-17 {
-  position: absolute; }
 
 .ray-17 > .string {
   transform: rotate(107deg); }
 
-.ray-18 {
-  position: absolute; }
-
 .ray-18 > .string {
   transform: rotate(108deg); }
-
-.ray-19 {
-  position: absolute; }
 
 .ray-19 > .string {
   transform: rotate(109deg); }
 
-.ray-20 {
-  position: absolute; }
-
 .ray-20 > .string {
   transform: rotate(110deg); }
-
-.ray-21 {
-  position: absolute; }
 
 .ray-21 > .string {
   transform: rotate(111deg); }
 
-.ray-22 {
-  position: absolute; }
-
 .ray-22 > .string {
   transform: rotate(112deg); }
-
-.ray-23 {
-  position: absolute; }
 
 .ray-23 > .string {
   transform: rotate(113deg); }
 
-.ray-24 {
-  position: absolute; }
-
 .ray-24 > .string {
   transform: rotate(114deg); }
-
-.ray-25 {
-  position: absolute; }
 
 .ray-25 > .string {
   transform: rotate(115deg); }
 
-.ray-26 {
-  position: absolute; }
-
 .ray-26 > .string {
   transform: rotate(116deg); }
-
-.ray-27 {
-  position: absolute; }
 
 .ray-27 > .string {
   transform: rotate(117deg); }
 
-.ray-28 {
-  position: absolute; }
-
 .ray-28 > .string {
   transform: rotate(118deg); }
-
-.ray-29 {
-  position: absolute; }
 
 .ray-29 > .string {
   transform: rotate(119deg); }
 
-.ray-30 {
-  position: absolute; }
-
 .ray-30 > .string {
   transform: rotate(120deg); }
-
-.ray-31 {
-  position: absolute; }
 
 .ray-31 > .string {
   transform: rotate(121deg); }
 
-.ray-32 {
-  position: absolute; }
-
 .ray-32 > .string {
   transform: rotate(122deg); }
-
-.ray-33 {
-  position: absolute; }
 
 .ray-33 > .string {
   transform: rotate(123deg); }
 
-.ray-34 {
-  position: absolute; }
-
 .ray-34 > .string {
   transform: rotate(124deg); }
-
-.ray-35 {
-  position: absolute; }
 
 .ray-35 > .string {
   transform: rotate(125deg); }
 
-.ray-36 {
-  position: absolute; }
-
 .ray-36 > .string {
   transform: rotate(126deg); }
-
-.ray-37 {
-  position: absolute; }
 
 .ray-37 > .string {
   transform: rotate(127deg); }
 
-.ray-38 {
-  position: absolute; }
-
 .ray-38 > .string {
   transform: rotate(128deg); }
-
-.ray-39 {
-  position: absolute; }
 
 .ray-39 > .string {
   transform: rotate(129deg); }
 
-.ray-40 {
-  position: absolute; }
-
 .ray-40 > .string {
   transform: rotate(130deg); }
-
-.ray-41 {
-  position: absolute; }
 
 .ray-41 > .string {
   transform: rotate(131deg); }
 
-.ray-42 {
-  position: absolute; }
-
 .ray-42 > .string {
   transform: rotate(132deg); }
-
-.ray-43 {
-  position: absolute; }
 
 .ray-43 > .string {
   transform: rotate(133deg); }
 
-.ray-44 {
-  position: absolute; }
-
 .ray-44 > .string {
   transform: rotate(134deg); }
-
-.ray-45 {
-  position: absolute; }
 
 .ray-45 > .string {
   transform: rotate(135deg); }
 
-.ray-46 {
-  position: absolute; }
-
 .ray-46 > .string {
   transform: rotate(136deg); }
-
-.ray-47 {
-  position: absolute; }
 
 .ray-47 > .string {
   transform: rotate(137deg); }
 
-.ray-48 {
-  position: absolute; }
-
 .ray-48 > .string {
   transform: rotate(138deg); }
-
-.ray-49 {
-  position: absolute; }
 
 .ray-49 > .string {
   transform: rotate(139deg); }
 
-.ray-50 {
-  position: absolute; }
-
 .ray-50 > .string {
   transform: rotate(140deg); }
-
-.ray-51 {
-  position: absolute; }
 
 .ray-51 > .string {
   transform: rotate(141deg); }
 
-.ray-52 {
-  position: absolute; }
-
 .ray-52 > .string {
   transform: rotate(142deg); }
-
-.ray-53 {
-  position: absolute; }
 
 .ray-53 > .string {
   transform: rotate(143deg); }
 
-.ray-54 {
-  position: absolute; }
-
 .ray-54 > .string {
   transform: rotate(144deg); }
-
-.ray-55 {
-  position: absolute; }
 
 .ray-55 > .string {
   transform: rotate(145deg); }
 
-.ray-56 {
-  position: absolute; }
-
 .ray-56 > .string {
   transform: rotate(146deg); }
-
-.ray-57 {
-  position: absolute; }
 
 .ray-57 > .string {
   transform: rotate(147deg); }
 
-.ray-58 {
-  position: absolute; }
-
 .ray-58 > .string {
   transform: rotate(148deg); }
-
-.ray-59 {
-  position: absolute; }
 
 .ray-59 > .string {
   transform: rotate(149deg); }
 
-.ray-60 {
-  position: absolute; }
-
 .ray-60 > .string {
   transform: rotate(150deg); }
-
-.ray-61 {
-  position: absolute; }
 
 .ray-61 > .string {
   transform: rotate(151deg); }
 
-.ray-62 {
-  position: absolute; }
-
 .ray-62 > .string {
   transform: rotate(152deg); }
-
-.ray-63 {
-  position: absolute; }
 
 .ray-63 > .string {
   transform: rotate(153deg); }
 
-.ray-64 {
-  position: absolute; }
-
 .ray-64 > .string {
   transform: rotate(154deg); }
-
-.ray-65 {
-  position: absolute; }
 
 .ray-65 > .string {
   transform: rotate(155deg); }
 
-.ray-66 {
-  position: absolute; }
-
 .ray-66 > .string {
   transform: rotate(156deg); }
-
-.ray-67 {
-  position: absolute; }
 
 .ray-67 > .string {
   transform: rotate(157deg); }
 
-.ray-68 {
-  position: absolute; }
-
 .ray-68 > .string {
   transform: rotate(158deg); }
-
-.ray-69 {
-  position: absolute; }
 
 .ray-69 > .string {
   transform: rotate(159deg); }
 
-.ray-70 {
-  position: absolute; }
-
 .ray-70 > .string {
   transform: rotate(160deg); }
-
-.ray-71 {
-  position: absolute; }
 
 .ray-71 > .string {
   transform: rotate(161deg); }
 
-.ray-72 {
-  position: absolute; }
-
 .ray-72 > .string {
   transform: rotate(162deg); }
-
-.ray-73 {
-  position: absolute; }
 
 .ray-73 > .string {
   transform: rotate(163deg); }
 
-.ray-74 {
-  position: absolute; }
-
 .ray-74 > .string {
   transform: rotate(164deg); }
-
-.ray-75 {
-  position: absolute; }
 
 .ray-75 > .string {
   transform: rotate(165deg); }
 
-.ray-76 {
-  position: absolute; }
-
 .ray-76 > .string {
   transform: rotate(166deg); }
-
-.ray-77 {
-  position: absolute; }
 
 .ray-77 > .string {
   transform: rotate(167deg); }
 
-.ray-78 {
-  position: absolute; }
-
 .ray-78 > .string {
   transform: rotate(168deg); }
-
-.ray-79 {
-  position: absolute; }
 
 .ray-79 > .string {
   transform: rotate(169deg); }
 
-.ray-80 {
-  position: absolute; }
-
 .ray-80 > .string {
   transform: rotate(170deg); }
-
-.ray-81 {
-  position: absolute; }
 
 .ray-81 > .string {
   transform: rotate(171deg); }
 
-.ray-82 {
-  position: absolute; }
-
 .ray-82 > .string {
   transform: rotate(172deg); }
-
-.ray-83 {
-  position: absolute; }
 
 .ray-83 > .string {
   transform: rotate(173deg); }
 
-.ray-84 {
-  position: absolute; }
-
 .ray-84 > .string {
   transform: rotate(174deg); }
-
-.ray-85 {
-  position: absolute; }
 
 .ray-85 > .string {
   transform: rotate(175deg); }
 
-.ray-86 {
-  position: absolute; }
-
 .ray-86 > .string {
   transform: rotate(176deg); }
-
-.ray-87 {
-  position: absolute; }
 
 .ray-87 > .string {
   transform: rotate(177deg); }
 
-.ray-88 {
-  position: absolute; }
-
 .ray-88 > .string {
   transform: rotate(178deg); }
-
-.ray-89 {
-  position: absolute; }
 
 .ray-89 > .string {
   transform: rotate(179deg); }
 
-.ray-90 {
-  position: absolute; }
-
 .ray-90 > .string {
   transform: rotate(180deg); }
-
-.ray-91 {
-  position: absolute; }
 
 .ray-91 > .string {
   transform: rotate(181deg); }
 
-.ray-92 {
-  position: absolute; }
-
 .ray-92 > .string {
   transform: rotate(182deg); }
-
-.ray-93 {
-  position: absolute; }
 
 .ray-93 > .string {
   transform: rotate(183deg); }
 
-.ray-94 {
-  position: absolute; }
-
 .ray-94 > .string {
   transform: rotate(184deg); }
-
-.ray-95 {
-  position: absolute; }
 
 .ray-95 > .string {
   transform: rotate(185deg); }
 
-.ray-96 {
-  position: absolute; }
-
 .ray-96 > .string {
   transform: rotate(186deg); }
-
-.ray-97 {
-  position: absolute; }
 
 .ray-97 > .string {
   transform: rotate(187deg); }
 
-.ray-98 {
-  position: absolute; }
-
 .ray-98 > .string {
   transform: rotate(188deg); }
-
-.ray-99 {
-  position: absolute; }
 
 .ray-99 > .string {
   transform: rotate(189deg); }
 
-.ray-100 {
-  position: absolute; }
-
 .ray-100 > .string {
   transform: rotate(190deg); }
-
-.ray-101 {
-  position: absolute; }
 
 .ray-101 > .string {
   transform: rotate(191deg); }
 
-.ray-102 {
-  position: absolute; }
-
 .ray-102 > .string {
   transform: rotate(192deg); }
-
-.ray-103 {
-  position: absolute; }
 
 .ray-103 > .string {
   transform: rotate(193deg); }
 
-.ray-104 {
-  position: absolute; }
-
 .ray-104 > .string {
   transform: rotate(194deg); }
-
-.ray-105 {
-  position: absolute; }
 
 .ray-105 > .string {
   transform: rotate(195deg); }
 
-.ray-106 {
-  position: absolute; }
-
 .ray-106 > .string {
   transform: rotate(196deg); }
-
-.ray-107 {
-  position: absolute; }
 
 .ray-107 > .string {
   transform: rotate(197deg); }
 
-.ray-108 {
-  position: absolute; }
-
 .ray-108 > .string {
   transform: rotate(198deg); }
-
-.ray-109 {
-  position: absolute; }
 
 .ray-109 > .string {
   transform: rotate(199deg); }
 
-.ray-110 {
-  position: absolute; }
-
 .ray-110 > .string {
   transform: rotate(200deg); }
-
-.ray-111 {
-  position: absolute; }
 
 .ray-111 > .string {
   transform: rotate(201deg); }
 
-.ray-112 {
-  position: absolute; }
-
 .ray-112 > .string {
   transform: rotate(202deg); }
-
-.ray-113 {
-  position: absolute; }
 
 .ray-113 > .string {
   transform: rotate(203deg); }
 
-.ray-114 {
-  position: absolute; }
-
 .ray-114 > .string {
   transform: rotate(204deg); }
-
-.ray-115 {
-  position: absolute; }
 
 .ray-115 > .string {
   transform: rotate(205deg); }
 
-.ray-116 {
-  position: absolute; }
-
 .ray-116 > .string {
   transform: rotate(206deg); }
-
-.ray-117 {
-  position: absolute; }
 
 .ray-117 > .string {
   transform: rotate(207deg); }
 
-.ray-118 {
-  position: absolute; }
-
 .ray-118 > .string {
   transform: rotate(208deg); }
-
-.ray-119 {
-  position: absolute; }
 
 .ray-119 > .string {
   transform: rotate(209deg); }
 
-.ray-120 {
-  position: absolute; }
-
 .ray-120 > .string {
   transform: rotate(210deg); }
-
-.ray-121 {
-  position: absolute; }
 
 .ray-121 > .string {
   transform: rotate(211deg); }
 
-.ray-122 {
-  position: absolute; }
-
 .ray-122 > .string {
   transform: rotate(212deg); }
-
-.ray-123 {
-  position: absolute; }
 
 .ray-123 > .string {
   transform: rotate(213deg); }
 
-.ray-124 {
-  position: absolute; }
-
 .ray-124 > .string {
   transform: rotate(214deg); }
-
-.ray-125 {
-  position: absolute; }
 
 .ray-125 > .string {
   transform: rotate(215deg); }
 
-.ray-126 {
-  position: absolute; }
-
 .ray-126 > .string {
   transform: rotate(216deg); }
-
-.ray-127 {
-  position: absolute; }
 
 .ray-127 > .string {
   transform: rotate(217deg); }
 
-.ray-128 {
-  position: absolute; }
-
 .ray-128 > .string {
   transform: rotate(218deg); }
-
-.ray-129 {
-  position: absolute; }
 
 .ray-129 > .string {
   transform: rotate(219deg); }
 
-.ray-130 {
-  position: absolute; }
-
 .ray-130 > .string {
   transform: rotate(220deg); }
-
-.ray-131 {
-  position: absolute; }
 
 .ray-131 > .string {
   transform: rotate(221deg); }
 
-.ray-132 {
-  position: absolute; }
-
 .ray-132 > .string {
   transform: rotate(222deg); }
-
-.ray-133 {
-  position: absolute; }
 
 .ray-133 > .string {
   transform: rotate(223deg); }
 
-.ray-134 {
-  position: absolute; }
-
 .ray-134 > .string {
   transform: rotate(224deg); }
-
-.ray-135 {
-  position: absolute; }
 
 .ray-135 > .string {
   transform: rotate(225deg); }
 
-.ray-136 {
-  position: absolute; }
-
 .ray-136 > .string {
   transform: rotate(226deg); }
-
-.ray-137 {
-  position: absolute; }
 
 .ray-137 > .string {
   transform: rotate(227deg); }
 
-.ray-138 {
-  position: absolute; }
-
 .ray-138 > .string {
   transform: rotate(228deg); }
-
-.ray-139 {
-  position: absolute; }
 
 .ray-139 > .string {
   transform: rotate(229deg); }
 
-.ray-140 {
-  position: absolute; }
-
 .ray-140 > .string {
   transform: rotate(230deg); }
-
-.ray-141 {
-  position: absolute; }
 
 .ray-141 > .string {
   transform: rotate(231deg); }
 
-.ray-142 {
-  position: absolute; }
-
 .ray-142 > .string {
   transform: rotate(232deg); }
-
-.ray-143 {
-  position: absolute; }
 
 .ray-143 > .string {
   transform: rotate(233deg); }
 
-.ray-144 {
-  position: absolute; }
-
 .ray-144 > .string {
   transform: rotate(234deg); }
-
-.ray-145 {
-  position: absolute; }
 
 .ray-145 > .string {
   transform: rotate(235deg); }
 
-.ray-146 {
-  position: absolute; }
-
 .ray-146 > .string {
   transform: rotate(236deg); }
-
-.ray-147 {
-  position: absolute; }
 
 .ray-147 > .string {
   transform: rotate(237deg); }
 
-.ray-148 {
-  position: absolute; }
-
 .ray-148 > .string {
   transform: rotate(238deg); }
-
-.ray-149 {
-  position: absolute; }
 
 .ray-149 > .string {
   transform: rotate(239deg); }
 
-.ray-150 {
-  position: absolute; }
-
 .ray-150 > .string {
   transform: rotate(240deg); }
-
-.ray-151 {
-  position: absolute; }
 
 .ray-151 > .string {
   transform: rotate(241deg); }
 
-.ray-152 {
-  position: absolute; }
-
 .ray-152 > .string {
   transform: rotate(242deg); }
-
-.ray-153 {
-  position: absolute; }
 
 .ray-153 > .string {
   transform: rotate(243deg); }
 
-.ray-154 {
-  position: absolute; }
-
 .ray-154 > .string {
   transform: rotate(244deg); }
-
-.ray-155 {
-  position: absolute; }
 
 .ray-155 > .string {
   transform: rotate(245deg); }
 
-.ray-156 {
-  position: absolute; }
-
 .ray-156 > .string {
   transform: rotate(246deg); }
-
-.ray-157 {
-  position: absolute; }
 
 .ray-157 > .string {
   transform: rotate(247deg); }
 
-.ray-158 {
-  position: absolute; }
-
 .ray-158 > .string {
   transform: rotate(248deg); }
-
-.ray-159 {
-  position: absolute; }
 
 .ray-159 > .string {
   transform: rotate(249deg); }
 
-.ray-160 {
-  position: absolute; }
-
 .ray-160 > .string {
   transform: rotate(250deg); }
-
-.ray-161 {
-  position: absolute; }
 
 .ray-161 > .string {
   transform: rotate(251deg); }
 
-.ray-162 {
-  position: absolute; }
-
 .ray-162 > .string {
   transform: rotate(252deg); }
-
-.ray-163 {
-  position: absolute; }
 
 .ray-163 > .string {
   transform: rotate(253deg); }
 
-.ray-164 {
-  position: absolute; }
-
 .ray-164 > .string {
   transform: rotate(254deg); }
-
-.ray-165 {
-  position: absolute; }
 
 .ray-165 > .string {
   transform: rotate(255deg); }
 
-.ray-166 {
-  position: absolute; }
-
 .ray-166 > .string {
   transform: rotate(256deg); }
-
-.ray-167 {
-  position: absolute; }
 
 .ray-167 > .string {
   transform: rotate(257deg); }
 
-.ray-168 {
-  position: absolute; }
-
 .ray-168 > .string {
   transform: rotate(258deg); }
-
-.ray-169 {
-  position: absolute; }
 
 .ray-169 > .string {
   transform: rotate(259deg); }
 
-.ray-170 {
-  position: absolute; }
-
 .ray-170 > .string {
   transform: rotate(260deg); }
-
-.ray-171 {
-  position: absolute; }
 
 .ray-171 > .string {
   transform: rotate(261deg); }
 
-.ray-172 {
-  position: absolute; }
-
 .ray-172 > .string {
   transform: rotate(262deg); }
-
-.ray-173 {
-  position: absolute; }
 
 .ray-173 > .string {
   transform: rotate(263deg); }
 
-.ray-174 {
-  position: absolute; }
-
 .ray-174 > .string {
   transform: rotate(264deg); }
-
-.ray-175 {
-  position: absolute; }
 
 .ray-175 > .string {
   transform: rotate(265deg); }
 
-.ray-176 {
-  position: absolute; }
-
 .ray-176 > .string {
   transform: rotate(266deg); }
-
-.ray-177 {
-  position: absolute; }
 
 .ray-177 > .string {
   transform: rotate(267deg); }
 
-.ray-178 {
-  position: absolute; }
-
 .ray-178 > .string {
   transform: rotate(268deg); }
-
-.ray-179 {
-  position: absolute; }
 
 .ray-179 > .string {
   transform: rotate(269deg); }
 
-.ray-180 {
-  position: absolute; }
-
 .ray-180 > .string {
   transform: rotate(270deg); }
-
-.ray-181 {
-  position: absolute; }
 
 .ray-181 > .string {
   transform: rotate(271deg); }
 
-.ray-182 {
-  position: absolute; }
-
 .ray-182 > .string {
   transform: rotate(272deg); }
-
-.ray-183 {
-  position: absolute; }
 
 .ray-183 > .string {
   transform: rotate(273deg); }
 
-.ray-184 {
-  position: absolute; }
-
 .ray-184 > .string {
   transform: rotate(274deg); }
-
-.ray-185 {
-  position: absolute; }
 
 .ray-185 > .string {
   transform: rotate(275deg); }
 
-.ray-186 {
-  position: absolute; }
-
 .ray-186 > .string {
   transform: rotate(276deg); }
-
-.ray-187 {
-  position: absolute; }
 
 .ray-187 > .string {
   transform: rotate(277deg); }
 
-.ray-188 {
-  position: absolute; }
-
 .ray-188 > .string {
   transform: rotate(278deg); }
-
-.ray-189 {
-  position: absolute; }
 
 .ray-189 > .string {
   transform: rotate(279deg); }
 
-.ray-190 {
-  position: absolute; }
-
 .ray-190 > .string {
   transform: rotate(280deg); }
-
-.ray-191 {
-  position: absolute; }
 
 .ray-191 > .string {
   transform: rotate(281deg); }
 
-.ray-192 {
-  position: absolute; }
-
 .ray-192 > .string {
   transform: rotate(282deg); }
-
-.ray-193 {
-  position: absolute; }
 
 .ray-193 > .string {
   transform: rotate(283deg); }
 
-.ray-194 {
-  position: absolute; }
-
 .ray-194 > .string {
   transform: rotate(284deg); }
-
-.ray-195 {
-  position: absolute; }
 
 .ray-195 > .string {
   transform: rotate(285deg); }
 
-.ray-196 {
-  position: absolute; }
-
 .ray-196 > .string {
   transform: rotate(286deg); }
-
-.ray-197 {
-  position: absolute; }
 
 .ray-197 > .string {
   transform: rotate(287deg); }
 
-.ray-198 {
-  position: absolute; }
-
 .ray-198 > .string {
   transform: rotate(288deg); }
-
-.ray-199 {
-  position: absolute; }
 
 .ray-199 > .string {
   transform: rotate(289deg); }
 
-.ray-200 {
-  position: absolute; }
-
 .ray-200 > .string {
   transform: rotate(290deg); }
-
-.ray-201 {
-  position: absolute; }
 
 .ray-201 > .string {
   transform: rotate(291deg); }
 
-.ray-202 {
-  position: absolute; }
-
 .ray-202 > .string {
   transform: rotate(292deg); }
-
-.ray-203 {
-  position: absolute; }
 
 .ray-203 > .string {
   transform: rotate(293deg); }
 
-.ray-204 {
-  position: absolute; }
-
 .ray-204 > .string {
   transform: rotate(294deg); }
-
-.ray-205 {
-  position: absolute; }
 
 .ray-205 > .string {
   transform: rotate(295deg); }
 
-.ray-206 {
-  position: absolute; }
-
 .ray-206 > .string {
   transform: rotate(296deg); }
-
-.ray-207 {
-  position: absolute; }
 
 .ray-207 > .string {
   transform: rotate(297deg); }
 
-.ray-208 {
-  position: absolute; }
-
 .ray-208 > .string {
   transform: rotate(298deg); }
-
-.ray-209 {
-  position: absolute; }
 
 .ray-209 > .string {
   transform: rotate(299deg); }
 
-.ray-210 {
-  position: absolute; }
-
 .ray-210 > .string {
   transform: rotate(300deg); }
-
-.ray-211 {
-  position: absolute; }
 
 .ray-211 > .string {
   transform: rotate(301deg); }
 
-.ray-212 {
-  position: absolute; }
-
 .ray-212 > .string {
   transform: rotate(302deg); }
-
-.ray-213 {
-  position: absolute; }
 
 .ray-213 > .string {
   transform: rotate(303deg); }
 
-.ray-214 {
-  position: absolute; }
-
 .ray-214 > .string {
   transform: rotate(304deg); }
-
-.ray-215 {
-  position: absolute; }
 
 .ray-215 > .string {
   transform: rotate(305deg); }
 
-.ray-216 {
-  position: absolute; }
-
 .ray-216 > .string {
   transform: rotate(306deg); }
-
-.ray-217 {
-  position: absolute; }
 
 .ray-217 > .string {
   transform: rotate(307deg); }
 
-.ray-218 {
-  position: absolute; }
-
 .ray-218 > .string {
   transform: rotate(308deg); }
-
-.ray-219 {
-  position: absolute; }
 
 .ray-219 > .string {
   transform: rotate(309deg); }
 
-.ray-220 {
-  position: absolute; }
-
 .ray-220 > .string {
   transform: rotate(310deg); }
-
-.ray-221 {
-  position: absolute; }
 
 .ray-221 > .string {
   transform: rotate(311deg); }
 
-.ray-222 {
-  position: absolute; }
-
 .ray-222 > .string {
   transform: rotate(312deg); }
-
-.ray-223 {
-  position: absolute; }
 
 .ray-223 > .string {
   transform: rotate(313deg); }
 
-.ray-224 {
-  position: absolute; }
-
 .ray-224 > .string {
   transform: rotate(314deg); }
-
-.ray-225 {
-  position: absolute; }
 
 .ray-225 > .string {
   transform: rotate(315deg); }
 
-.ray-226 {
-  position: absolute; }
-
 .ray-226 > .string {
   transform: rotate(316deg); }
-
-.ray-227 {
-  position: absolute; }
 
 .ray-227 > .string {
   transform: rotate(317deg); }
 
-.ray-228 {
-  position: absolute; }
-
 .ray-228 > .string {
   transform: rotate(318deg); }
-
-.ray-229 {
-  position: absolute; }
 
 .ray-229 > .string {
   transform: rotate(319deg); }
 
-.ray-230 {
-  position: absolute; }
-
 .ray-230 > .string {
   transform: rotate(320deg); }
-
-.ray-231 {
-  position: absolute; }
 
 .ray-231 > .string {
   transform: rotate(321deg); }
 
-.ray-232 {
-  position: absolute; }
-
 .ray-232 > .string {
   transform: rotate(322deg); }
-
-.ray-233 {
-  position: absolute; }
 
 .ray-233 > .string {
   transform: rotate(323deg); }
 
-.ray-234 {
-  position: absolute; }
-
 .ray-234 > .string {
   transform: rotate(324deg); }
-
-.ray-235 {
-  position: absolute; }
 
 .ray-235 > .string {
   transform: rotate(325deg); }
 
-.ray-236 {
-  position: absolute; }
-
 .ray-236 > .string {
   transform: rotate(326deg); }
-
-.ray-237 {
-  position: absolute; }
 
 .ray-237 > .string {
   transform: rotate(327deg); }
 
-.ray-238 {
-  position: absolute; }
-
 .ray-238 > .string {
   transform: rotate(328deg); }
-
-.ray-239 {
-  position: absolute; }
 
 .ray-239 > .string {
   transform: rotate(329deg); }
 
-.ray-240 {
-  position: absolute; }
-
 .ray-240 > .string {
   transform: rotate(330deg); }
-
-.ray-241 {
-  position: absolute; }
 
 .ray-241 > .string {
   transform: rotate(331deg); }
 
-.ray-242 {
-  position: absolute; }
-
 .ray-242 > .string {
   transform: rotate(332deg); }
-
-.ray-243 {
-  position: absolute; }
 
 .ray-243 > .string {
   transform: rotate(333deg); }
 
-.ray-244 {
-  position: absolute; }
-
 .ray-244 > .string {
   transform: rotate(334deg); }
-
-.ray-245 {
-  position: absolute; }
 
 .ray-245 > .string {
   transform: rotate(335deg); }
 
-.ray-246 {
-  position: absolute; }
-
 .ray-246 > .string {
   transform: rotate(336deg); }
-
-.ray-247 {
-  position: absolute; }
 
 .ray-247 > .string {
   transform: rotate(337deg); }
 
-.ray-248 {
-  position: absolute; }
-
 .ray-248 > .string {
   transform: rotate(338deg); }
-
-.ray-249 {
-  position: absolute; }
 
 .ray-249 > .string {
   transform: rotate(339deg); }
 
-.ray-250 {
-  position: absolute; }
-
 .ray-250 > .string {
   transform: rotate(340deg); }
-
-.ray-251 {
-  position: absolute; }
 
 .ray-251 > .string {
   transform: rotate(341deg); }
 
-.ray-252 {
-  position: absolute; }
-
 .ray-252 > .string {
   transform: rotate(342deg); }
-
-.ray-253 {
-  position: absolute; }
 
 .ray-253 > .string {
   transform: rotate(343deg); }
 
-.ray-254 {
-  position: absolute; }
-
 .ray-254 > .string {
   transform: rotate(344deg); }
-
-.ray-255 {
-  position: absolute; }
 
 .ray-255 > .string {
   transform: rotate(345deg); }
 
-.ray-256 {
-  position: absolute; }
-
 .ray-256 > .string {
   transform: rotate(346deg); }
-
-.ray-257 {
-  position: absolute; }
 
 .ray-257 > .string {
   transform: rotate(347deg); }
 
-.ray-258 {
-  position: absolute; }
-
 .ray-258 > .string {
   transform: rotate(348deg); }
-
-.ray-259 {
-  position: absolute; }
 
 .ray-259 > .string {
   transform: rotate(349deg); }
 
-.ray-260 {
-  position: absolute; }
-
 .ray-260 > .string {
   transform: rotate(350deg); }
-
-.ray-261 {
-  position: absolute; }
 
 .ray-261 > .string {
   transform: rotate(351deg); }
 
-.ray-262 {
-  position: absolute; }
-
 .ray-262 > .string {
   transform: rotate(352deg); }
-
-.ray-263 {
-  position: absolute; }
 
 .ray-263 > .string {
   transform: rotate(353deg); }
 
-.ray-264 {
-  position: absolute; }
-
 .ray-264 > .string {
   transform: rotate(354deg); }
-
-.ray-265 {
-  position: absolute; }
 
 .ray-265 > .string {
   transform: rotate(355deg); }
 
-.ray-266 {
-  position: absolute; }
-
 .ray-266 > .string {
   transform: rotate(356deg); }
-
-.ray-267 {
-  position: absolute; }
 
 .ray-267 > .string {
   transform: rotate(357deg); }
 
-.ray-268 {
-  position: absolute; }
-
 .ray-268 > .string {
   transform: rotate(358deg); }
-
-.ray-269 {
-  position: absolute; }
 
 .ray-269 > .string {
   transform: rotate(359deg); }
 
-.ray-270 {
-  position: absolute; }
-
 .ray-270 > .string {
   transform: rotate(360deg); }
-
-.ray-271 {
-  position: absolute; }
 
 .ray-271 > .string {
   transform: rotate(361deg); }
 
-.ray-272 {
-  position: absolute; }
-
 .ray-272 > .string {
   transform: rotate(362deg); }
-
-.ray-273 {
-  position: absolute; }
 
 .ray-273 > .string {
   transform: rotate(363deg); }
 
-.ray-274 {
-  position: absolute; }
-
 .ray-274 > .string {
   transform: rotate(364deg); }
-
-.ray-275 {
-  position: absolute; }
 
 .ray-275 > .string {
   transform: rotate(365deg); }
 
-.ray-276 {
-  position: absolute; }
-
 .ray-276 > .string {
   transform: rotate(366deg); }
-
-.ray-277 {
-  position: absolute; }
 
 .ray-277 > .string {
   transform: rotate(367deg); }
 
-.ray-278 {
-  position: absolute; }
-
 .ray-278 > .string {
   transform: rotate(368deg); }
-
-.ray-279 {
-  position: absolute; }
 
 .ray-279 > .string {
   transform: rotate(369deg); }
 
-.ray-280 {
-  position: absolute; }
-
 .ray-280 > .string {
   transform: rotate(370deg); }
-
-.ray-281 {
-  position: absolute; }
 
 .ray-281 > .string {
   transform: rotate(371deg); }
 
-.ray-282 {
-  position: absolute; }
-
 .ray-282 > .string {
   transform: rotate(372deg); }
-
-.ray-283 {
-  position: absolute; }
 
 .ray-283 > .string {
   transform: rotate(373deg); }
 
-.ray-284 {
-  position: absolute; }
-
 .ray-284 > .string {
   transform: rotate(374deg); }
-
-.ray-285 {
-  position: absolute; }
 
 .ray-285 > .string {
   transform: rotate(375deg); }
 
-.ray-286 {
-  position: absolute; }
-
 .ray-286 > .string {
   transform: rotate(376deg); }
-
-.ray-287 {
-  position: absolute; }
 
 .ray-287 > .string {
   transform: rotate(377deg); }
 
-.ray-288 {
-  position: absolute; }
-
 .ray-288 > .string {
   transform: rotate(378deg); }
-
-.ray-289 {
-  position: absolute; }
 
 .ray-289 > .string {
   transform: rotate(379deg); }
 
-.ray-290 {
-  position: absolute; }
-
 .ray-290 > .string {
   transform: rotate(380deg); }
-
-.ray-291 {
-  position: absolute; }
 
 .ray-291 > .string {
   transform: rotate(381deg); }
 
-.ray-292 {
-  position: absolute; }
-
 .ray-292 > .string {
   transform: rotate(382deg); }
-
-.ray-293 {
-  position: absolute; }
 
 .ray-293 > .string {
   transform: rotate(383deg); }
 
-.ray-294 {
-  position: absolute; }
-
 .ray-294 > .string {
   transform: rotate(384deg); }
-
-.ray-295 {
-  position: absolute; }
 
 .ray-295 > .string {
   transform: rotate(385deg); }
 
-.ray-296 {
-  position: absolute; }
-
 .ray-296 > .string {
   transform: rotate(386deg); }
-
-.ray-297 {
-  position: absolute; }
 
 .ray-297 > .string {
   transform: rotate(387deg); }
 
-.ray-298 {
-  position: absolute; }
-
 .ray-298 > .string {
   transform: rotate(388deg); }
-
-.ray-299 {
-  position: absolute; }
 
 .ray-299 > .string {
   transform: rotate(389deg); }
 
-.ray-300 {
-  position: absolute; }
-
 .ray-300 > .string {
   transform: rotate(390deg); }
-
-.ray-301 {
-  position: absolute; }
 
 .ray-301 > .string {
   transform: rotate(391deg); }
 
-.ray-302 {
-  position: absolute; }
-
 .ray-302 > .string {
   transform: rotate(392deg); }
-
-.ray-303 {
-  position: absolute; }
 
 .ray-303 > .string {
   transform: rotate(393deg); }
 
-.ray-304 {
-  position: absolute; }
-
 .ray-304 > .string {
   transform: rotate(394deg); }
-
-.ray-305 {
-  position: absolute; }
 
 .ray-305 > .string {
   transform: rotate(395deg); }
 
-.ray-306 {
-  position: absolute; }
-
 .ray-306 > .string {
   transform: rotate(396deg); }
-
-.ray-307 {
-  position: absolute; }
 
 .ray-307 > .string {
   transform: rotate(397deg); }
 
-.ray-308 {
-  position: absolute; }
-
 .ray-308 > .string {
   transform: rotate(398deg); }
-
-.ray-309 {
-  position: absolute; }
 
 .ray-309 > .string {
   transform: rotate(399deg); }
 
-.ray-310 {
-  position: absolute; }
-
 .ray-310 > .string {
   transform: rotate(400deg); }
-
-.ray-311 {
-  position: absolute; }
 
 .ray-311 > .string {
   transform: rotate(401deg); }
 
-.ray-312 {
-  position: absolute; }
-
 .ray-312 > .string {
   transform: rotate(402deg); }
-
-.ray-313 {
-  position: absolute; }
 
 .ray-313 > .string {
   transform: rotate(403deg); }
 
-.ray-314 {
-  position: absolute; }
-
 .ray-314 > .string {
   transform: rotate(404deg); }
-
-.ray-315 {
-  position: absolute; }
 
 .ray-315 > .string {
   transform: rotate(405deg); }
 
-.ray-316 {
-  position: absolute; }
-
 .ray-316 > .string {
   transform: rotate(406deg); }
-
-.ray-317 {
-  position: absolute; }
 
 .ray-317 > .string {
   transform: rotate(407deg); }
 
-.ray-318 {
-  position: absolute; }
-
 .ray-318 > .string {
   transform: rotate(408deg); }
-
-.ray-319 {
-  position: absolute; }
 
 .ray-319 > .string {
   transform: rotate(409deg); }
 
-.ray-320 {
-  position: absolute; }
-
 .ray-320 > .string {
   transform: rotate(410deg); }
-
-.ray-321 {
-  position: absolute; }
 
 .ray-321 > .string {
   transform: rotate(411deg); }
 
-.ray-322 {
-  position: absolute; }
-
 .ray-322 > .string {
   transform: rotate(412deg); }
-
-.ray-323 {
-  position: absolute; }
 
 .ray-323 > .string {
   transform: rotate(413deg); }
 
-.ray-324 {
-  position: absolute; }
-
 .ray-324 > .string {
   transform: rotate(414deg); }
-
-.ray-325 {
-  position: absolute; }
 
 .ray-325 > .string {
   transform: rotate(415deg); }
 
-.ray-326 {
-  position: absolute; }
-
 .ray-326 > .string {
   transform: rotate(416deg); }
-
-.ray-327 {
-  position: absolute; }
 
 .ray-327 > .string {
   transform: rotate(417deg); }
 
-.ray-328 {
-  position: absolute; }
-
 .ray-328 > .string {
   transform: rotate(418deg); }
-
-.ray-329 {
-  position: absolute; }
 
 .ray-329 > .string {
   transform: rotate(419deg); }
 
-.ray-330 {
-  position: absolute; }
-
 .ray-330 > .string {
   transform: rotate(420deg); }
-
-.ray-331 {
-  position: absolute; }
 
 .ray-331 > .string {
   transform: rotate(421deg); }
 
-.ray-332 {
-  position: absolute; }
-
 .ray-332 > .string {
   transform: rotate(422deg); }
-
-.ray-333 {
-  position: absolute; }
 
 .ray-333 > .string {
   transform: rotate(423deg); }
 
-.ray-334 {
-  position: absolute; }
-
 .ray-334 > .string {
   transform: rotate(424deg); }
-
-.ray-335 {
-  position: absolute; }
 
 .ray-335 > .string {
   transform: rotate(425deg); }
 
-.ray-336 {
-  position: absolute; }
-
 .ray-336 > .string {
   transform: rotate(426deg); }
-
-.ray-337 {
-  position: absolute; }
 
 .ray-337 > .string {
   transform: rotate(427deg); }
 
-.ray-338 {
-  position: absolute; }
-
 .ray-338 > .string {
   transform: rotate(428deg); }
-
-.ray-339 {
-  position: absolute; }
 
 .ray-339 > .string {
   transform: rotate(429deg); }
 
-.ray-340 {
-  position: absolute; }
-
 .ray-340 > .string {
   transform: rotate(430deg); }
-
-.ray-341 {
-  position: absolute; }
 
 .ray-341 > .string {
   transform: rotate(431deg); }
 
-.ray-342 {
-  position: absolute; }
-
 .ray-342 > .string {
   transform: rotate(432deg); }
-
-.ray-343 {
-  position: absolute; }
 
 .ray-343 > .string {
   transform: rotate(433deg); }
 
-.ray-344 {
-  position: absolute; }
-
 .ray-344 > .string {
   transform: rotate(434deg); }
-
-.ray-345 {
-  position: absolute; }
 
 .ray-345 > .string {
   transform: rotate(435deg); }
 
-.ray-346 {
-  position: absolute; }
-
 .ray-346 > .string {
   transform: rotate(436deg); }
-
-.ray-347 {
-  position: absolute; }
 
 .ray-347 > .string {
   transform: rotate(437deg); }
 
-.ray-348 {
-  position: absolute; }
-
 .ray-348 > .string {
   transform: rotate(438deg); }
-
-.ray-349 {
-  position: absolute; }
 
 .ray-349 > .string {
   transform: rotate(439deg); }
 
-.ray-350 {
-  position: absolute; }
-
 .ray-350 > .string {
   transform: rotate(440deg); }
-
-.ray-351 {
-  position: absolute; }
 
 .ray-351 > .string {
   transform: rotate(441deg); }
 
-.ray-352 {
-  position: absolute; }
-
 .ray-352 > .string {
   transform: rotate(442deg); }
-
-.ray-353 {
-  position: absolute; }
 
 .ray-353 > .string {
   transform: rotate(443deg); }
 
-.ray-354 {
-  position: absolute; }
-
 .ray-354 > .string {
   transform: rotate(444deg); }
-
-.ray-355 {
-  position: absolute; }
 
 .ray-355 > .string {
   transform: rotate(445deg); }
 
-.ray-356 {
-  position: absolute; }
-
 .ray-356 > .string {
   transform: rotate(446deg); }
-
-.ray-357 {
-  position: absolute; }
 
 .ray-357 > .string {
   transform: rotate(447deg); }
 
-.ray-358 {
-  position: absolute; }
-
 .ray-358 > .string {
   transform: rotate(448deg); }
 
-.ray-359 {
-  position: absolute; }
-
 .ray-359 > .string {
   transform: rotate(449deg); }
-
-.ray-360 {
-  position: absolute; }
 
 .ray-360 > .string {
   transform: rotate(450deg); }
@@ -2388,7 +1301,7 @@ body {
   -webkit-animation: slide-top 400s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: slide-top 400s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
 
-#roundie-loading-screen {
+#PiePie-loading-screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -2401,7 +1314,7 @@ body {
   top: 36% !important;
   animation: loading-pole ease 12s infinite both; }
 
-.roundie-loading-text {
+.PiePie-loading-text {
   position: absolute;
   top: 60%;
   text-align: center;
@@ -2409,7 +1322,7 @@ body {
   font-size: 5rem;
   color: #c51162; }
   @media screen and (max-width: 767px) {
-    .roundie-loading-text {
+    .PiePie-loading-text {
       font-size: 3rem; } }
 
 @keyframes loading-pole {
@@ -2479,10 +1392,21 @@ body {
 @keyframes pop-out {
   0% {
     opacity: 0.8;
-    transform: translateY(0); }
+    transform: translateY(0);
+    padding: 0.8rem 1.5rem 0.8rem 1.5rem;
+    min-height: 1.3rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.4rem; }
   100% {
     opacity: 0;
-    transform: translateY(-200%); } }
+    transform: translateY(-400%);
+    padding: 0;
+    min-height: 0;
+    height: 0;
+    margin-bottom: 0;
+    font-size: 0;
+    line-height: 0; } }
 .pop-in {
   animation: pop-in ease 300ms both; }
 
@@ -4464,4 +3388,4 @@ th {
 .z-depth-5 {
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3); }
 
-/*# sourceMappingURL=roundie.css.map */
+/*# sourceMappingURL=PiePie.css.map */
