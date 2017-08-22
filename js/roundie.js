@@ -48,7 +48,128 @@ let loadingOptions = {
     text: '',
 };
 
+let rayList = [];
+for(let i = 0; i < 360; i++){
+    let rayName = `ray-${i}`;
+    rayList.push(rayName);
+}
 
+
+/* functions used */
+
+// get unit of length from class name
+function getUnit(elem){
+    return /rem/.test(elem.className.match(/[0-9]+rem|[0-9]+px/)[0]) ? 'rem' : 'px'
+}
+
+// get length from class name
+function getLength(elem, unit){
+    let length;
+    if(unit === 'rem'){
+        length =  Number(elem.className.match(/[0-9]+rem/)[0].slice(0,-3));
+
+        /*
+         * to beautify the layout on mobile devices
+         * you can set the rate before using
+         * 'Roundie.options.mobileScaleRate = 1.333'
+         * */
+        if(Roundie.isMobile){
+            length = length/Roundie.options.mobileScaleRate;
+        }
+    }else if(unit === 'px'){
+        length =  Number(elem.className.match(/[0-9]+px/)[0].slice(0,-2));
+    }
+    return length;
+}
+
+// get bounce length
+function getBounceLength(elem, unit){
+    let bounceLength;
+    if(unit === 'rem'){
+        bounceLength =  Number(elem.className.match(/bounce-[0-9]+rem/)[0].match(/[0-9]+/)[0]);
+
+        /*
+         * to beautify the layout on mobile devices
+         * you can set the rate before using
+         * 'Roundie.options.mobileScaleRate = 1.333'
+         * */
+        if(Roundie.isMobile){
+            bounceLength = bounceLength/Roundie.options.mobileScaleRate;
+        }
+    }else if(unit === 'px'){
+        bounceLength =  Number(elem.className.match(/bounce-[0-9]+px/)[0].match(/[0-9]+/)[0]);
+    }
+    return bounceLength;
+}
+
+function appendString(elem, length, unit){
+    let string = document.createElement('div');
+    string.className += 'string';
+    string.style.width = `${length}${unit}`;
+    elem.appendChild(string);
+}
+
+function appendPop (elem, length, x, y, unit){
+    // set a listener on parent node
+    elem.parentNode.addEventListener('mouseover', ()=>{
+
+        // create an element to make sure the children do not vanish immediate after the mouse leaves
+        let invisibleElem = document.createElement('div');
+        invisibleElem.className += 'invisible-pie pie';
+        invisibleElem.style.width = `${length*1.7}${unit}`;
+        invisibleElem.style.height = `${length*1.7}${unit}`;
+        invisibleElem.style.borderRadius = `${length}${unit}`;
+        invisibleElem.style.top = `${length*-0.85}${unit}`;
+        invisibleElem.style.left = `${length*-0.85}${unit}`;
+        invisibleElem.addEventListener('mouseover',()=>{
+            elem.style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
+        });
+        elem.parentNode.appendChild(invisibleElem);
+        elem.style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
+    });
+    elem.parentNode.addEventListener('mouseout', ()=>{
+        setTimeout(()=>{
+            let invisibleElem2 = elem.parentNode.querySelector('.invisible-pie');
+            elem.parentNode.removeChild(invisibleElem2);
+        },300);
+        elem.style.transform = `translate(0, 0) rotate(270deg)`;
+    });
+}
+
+function appendBounce (elem, length, bounceLength, x, y ,bx, by, unit){
+    // add general style
+    elem.style.transition = `${Roundie.options.bounceDuration/2}ms ease`;
+
+    // add bounce line
+    if(/line/.test(elem.className)){
+        let string = document.createElement('div');
+        string.className += 'string';
+        string.style.transition = `${Roundie.options.bounceDuration/2}ms ease`;
+
+        // set bounce animation
+        setInterval(()=>{
+            elem.style.transform = `translate(${x+bx}${unit}, ${y+by}${unit})`;
+            string.style.width = `${length + bounceLength}${unit}`;
+            setTimeout(()=>{
+                elem.style.transform = `translate(${x}${unit}, ${y}${unit})`;
+                string.style.width = `${length}${unit}`;
+            },Roundie.options.bounceDuration/2)
+        },Roundie.options.bounceDuration);
+        elem.appendChild(string);
+    } else {
+
+        // set bounce animation
+        setInterval(()=>{
+            elem.style.transform = `translate(${x+bx}${unit}, ${y+by}${unit})`;
+            setTimeout(()=>{
+                elem.style.transform = `translate(${x}${unit}, ${y}${unit})`;
+            },Roundie.options.bounceDuration/2)
+        },Roundie.options.bounceDuration);
+    }
+}
+
+
+// Roundie Object
 let Roundie = {
 
     /* default, initial or sample options */
@@ -163,57 +284,7 @@ let Roundie = {
         }
     },
 
-    /*/!*set rings' styles to the dom*!/
-    setRings: ()=>{
-        let allRings = document.querySelectorAll('.ring');
-        if(allRings){
-            for(let i = 0; i < allRings.length; i++){
-                let ring = allRings[i];
-
-                /!*
-                 * if the pie is without a radius class name, it won't be working
-                 * *!/
-                if(ring.className.match(/[0-9]+rem|[0-9]+px/)){
-
-                    // get unit of radius
-                    /!*
-                     * using regular expression to get the length from class list of an element
-                     * *!/
-                    let unit = /rem/.test(ring.className.match(/[0-9]+rem|[0-9]+px/)[0]) ? 'rem' : 'px';
-
-                    // compute radius
-                    let radius;
-                    if(unit === 'rem'){
-                        radius = Number(ring.className.match(/[0-9]+rem|[0-9]+px/)[0].slice(0,-3));
-
-                        /!*
-                         * to beautify the layout on mobile devices
-                         * you can set the rate before using
-                         * 'Roundie.options.mobileScaleRate = 1.333'
-                         * *!/
-                        if(Roundie.isMobile){radius = radius/Roundie.options.mobileScaleRate}
-                    }else if(unit === 'px'){
-                        radius = Number(ring.className.match(/[0-9]+rem|[0-9]+px/)[0].slice(0,-2));
-                    }
-
-                    /!*
-                     * compute and set styles to pies
-                     * *!/
-                    let height = radius*1.1;
-                    ring.style.height = `${height}${unit}`;
-                    ring.style.width = `${height}${unit}`;
-                    let padding = radius*0.45;
-                    ring.style.padding = `${padding}${unit}`;
-                    let top = radius*(-1);
-                    ring.style.top = `${top}${unit}`;
-                    ring.style.left = `${top}${unit}`;
-                    ring.style.borderRadius = `${radius}${unit}`;
-                }
-            }
-        }
-    },*/
-
-    /* set axis to the dom*/
+    /* set axises to the dom*/
     setAxises: () => {
 
         // 12 directions
@@ -236,171 +307,87 @@ let Roundie = {
             "axis-11",
         ];
 
-        // rate for axis x and axis y
-        /*this */
-        let axisRates = [
-            [0, -1],
-            [0.5, -0.86602540378445],
-            [0.86602540378445, -0.5],
-            [1, 0],
-            [0.86602540378445, 0.5],
-            [0.5, 0.86602540378445],
-            [0, 1],
-            [-0.5, 0.86602540378445],
-            [-0.86602540378445, 0.5],
-            [-1, 0],
-            [-0.86602540378445, -0.5],
-            [-0.5, -0.86602540378445],
-        ];
-
         // set axises
         for (let i = 0; i < allAxises.length; i++){
 
             // translate the axises
             let axisElems = document.querySelectorAll(`.${allAxises[i]}`);
             if(axisElems){
-                for ( let j = 0; j < axisElems.length; j++){
-                    if(axisElems[j].className.match(/[0-9]+rem|[0-9]+px/)){
+                Roundie.setRays(axisElems, i*30);
+            }
+        }
+    },
 
-                        // get unit of radius
-                        /*
-                        * using regular expression to get the length from class list of an element
-                        * */
-                        let unit = /rem/.test(axisElems[j].className.match(/[0-9]+rem|[0-9]+px/)[0]) ? 'rem' : 'px';
+    /* set rays to the dom */
+    setRays: (axis = false, deg = false) => {
 
-                        // get length of the axis
-                        /*
-                        * right now only two units are supported 'px' and 'rem'
-                        * */
-                        let length;
-                        if(unit === 'rem'){
-                            length =  Number(axisElems[j].className.match(/[0-9]+rem/)[0].slice(0,-3));
+        function ray(rays,i){
+            if(rays){
+                for(let j = 0; j < rays.length; j++){
 
-                            /*
-                            * to beautify the layout on mobile devices
-                            * you can set the rate before using
-                            * 'Roundie.options.mobileScaleRate = 1.333'
-                            * */
-                            if(Roundie.isMobile){
-                                length = length/Roundie.options.mobileScaleRate;
-                            }
-                        }else if(unit === 'px'){
-                            length =  Number(axisElems[j].className.match(/[0-9]+px/)[0].slice(0,-2));
-                        }
+                    // default styles
+                    let ray = rays[j];
+                    ray.style.height = '0px';
+                    ray.style.width = '0px';
 
-                        // compute length on x and y
-                        let x = length*axisRates[i][0];
-                        let y = length*axisRates[i][1];
+                    if(ray.className.match(/[0-9]+rem|[0-9]+px/)){
+                        // get unit
+                        let unit = getUnit(ray);
+                        let length = getLength(ray, unit);
 
+                        // x and y
 
-                        // add lines
-                        /*
-                         * adding lines before adding styles is to assure that lines are beneath the pies
-                         * */
-                        if(axisElems[j].className.match(/line/) && !axisElems[j].className.match(/bounce/)){
-                            let string = document.createElement('div');
-                            string.className += 'string';
-                            string.style.width = `${length}${unit}`;
-                            axisElems[j].appendChild(string);
+                        let x = length*Math.sin(i*2*Math.PI/360);
+                        let y = length*Math.cos(i*2*Math.PI/360)*(-1);
+                        console.log(`${i}-${x}-${y}`)
+
+                        // line with out bounce
+                        // line with bounce will be added in bounce part
+                        if(ray.className.match(/line/) && !ray.className.match(/bounce/)){
+                            appendString(ray, length, unit);
                         }
 
                         // add style to axises
-                        if(/pop/.test(axisElems[j].className)){
+                        if(/pop/.test(ray.className)){
+                            appendPop(ray, length, x, y, unit);
 
-                            // set a listener on parent node
-                            axisElems[j].parentNode.addEventListener('mouseover', ()=>{
-
-                                // create an element to make sure the children do not vanish immediate after the mouse leaves
-                                let invisibleElem = document.createElement('div');
-                                invisibleElem.className += 'invisible-pie pie';
-                                invisibleElem.style.width = `${length*1.7}${unit}`;
-                                invisibleElem.style.height = `${length*1.7}${unit}`;
-                                invisibleElem.style.borderRadius = `${length}${unit}`;
-                                invisibleElem.style.top = `${length*-0.85}${unit}`;
-                                invisibleElem.style.left = `${length*-0.85}${unit}`;
-                                invisibleElem.addEventListener('mouseover',()=>{
-                                    axisElems[j].style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
-                                });
-                                axisElems[j].parentNode.appendChild(invisibleElem);
-                                axisElems[j].style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
-                            });
-                            axisElems[j].parentNode.addEventListener('mouseout', ()=>{
-                                setTimeout(()=>{
-                                    let invisibleElem2 = axisElems[j].parentNode.querySelector('.invisible-pie');
-                                    axisElems[j].parentNode.removeChild(invisibleElem2);
-                                },300);
-                                axisElems[j].style.transform = `translate(0, 0) rotate(270deg)`;
-                            });
-
-                        } /* end of pop */ else{
+                        } else{
                             /*
-                            * these are the axises with out pop class
-                            * */
-                            axisElems[j].style.transform = `translate(${x}${unit}, ${y}${unit})`;
+                             * these are the ray with out pop class
+                             * */
+                            ray.style.transform = `translate(${x}${unit}, ${y}${unit})`;
 
 
                             /*
-                            * add bounce style
-                            * */
-                            if(/bounce/.test(axisElems[j].className)){
+                             * add bounce style
+                             * */
+                            if(/bounce/.test(ray.className)){
 
                                 // get unit
-                                let unit = /bounce-[0-9]+rem/.test(axisElems[j].className.match(/bounce-[0-9]+rem|bounce[0-9]+px/)[0]) ? 'rem' : 'px';
-                                let bounceLength;
-                                if(unit === 'rem'){
-                                    bounceLength =  Number(axisElems[j].className.match(/bounce-[0-9]+rem/)[0].match(/[0-9]+/)[0]);
-
-                                    /*
-                                     * to beautify the layout on mobile devices
-                                     * you can set the rate before using
-                                     * 'Roundie.options.mobileScaleRate = 1.333'
-                                     * */
-                                    if(Roundie.isMobile){
-                                        bounceLength = bounceLength/Roundie.options.mobileScaleRate;
-                                    }
-                                }else if(unit === 'px'){
-                                    bounceLength =  Number(axisElems[j].className.match(/bounce-[0-9]+px/)[0].match(/[0-9]+/)[0]);
-                                }
+                                let bounceLength = getBounceLength(ray, unit);
 
                                 // get bounce x and y
-                                let bx = bounceLength*axisRates[i][0];
-                                let by = bounceLength*axisRates[i][1];
+                                let bx = bounceLength*Math.sin(i*2*Math.PI/360);
+                                let by = bounceLength*Math.cos(i*2*Math.PI/360)*(-1);
 
-                                // add general style
-                                axisElems[j].style.transition = `${Roundie.options.bounceDuration/2}ms ease`;
+                                appendBounce(ray, length,bounceLength, x, y ,bx, by, unit);
 
-                                // add bounce line
-                                if(/line/.test(axisElems[j].className)){
-                                    let string = document.createElement('div');
-                                    string.className += 'string';
-                                    string.style.transition = `${Roundie.options.bounceDuration/2}ms ease`;
-
-                                    // set bounce animation
-                                    setInterval(()=>{
-                                        axisElems[j].style.transform = `translate(${x+bx}${unit}, ${y+by}${unit})`;
-                                        string.style.width = `${length + bounceLength}${unit}`;
-                                        setTimeout(()=>{
-                                            axisElems[j].style.transform = `translate(${x}${unit}, ${y}${unit})`;
-                                            string.style.width = `${length}${unit}`;
-                                        },Roundie.options.bounceDuration/2)
-                                    },Roundie.options.bounceDuration);
-                                    axisElems[j].appendChild(string);
-                                } else {
-
-                                    // set bounce animation
-                                    setInterval(()=>{
-                                        axisElems[j].style.transform = `translate(${x+bx}${unit}, ${y+by}${unit})`;
-                                        setTimeout(()=>{
-                                            axisElems[j].style.transform = `translate(${x}${unit}, ${y}${unit})`;
-                                        },Roundie.options.bounceDuration/2)
-                                    },Roundie.options.bounceDuration);
-                                }
                             } // end of bounce
                         }
-                    } else{
-                        console.error(`Roundie.js: ${axisElems[j]} has no length, please add a length!`);
+
+                    }else {
+                        console.error(`Roundie.js: ${ray} has no length, please add a length!`);
                     }
                 }
+            }
+        }
+
+        if(axis){
+            ray(axis, deg);
+        }else{
+            for(let i = 0; i < rayList.length; i++){
+                let rays = document.querySelectorAll(`.${rayList[i]}`);
+                ray(rays, i);
             }
         }
     },
@@ -412,7 +399,7 @@ let Roundie = {
         /* call the methods of Roundie itself */
         Roundie.setAxises();
         Roundie.setPies();
-        // Roundie.setRings();
+        Roundie.setRays();
     },
 
     /* create and show loading page at the beginning */
@@ -423,7 +410,7 @@ let Roundie = {
         text.innerHTML = loadingOptions.text;
         text.className += 'roundie-loading-text';
         loadingScreen.appendChild(text);
-        Roundie.addNode(loadingScreen, loadingOptions);
+        Roundie.addNodes(loadingScreen, loadingOptions);
         Roundie.init();
         document.body.appendChild(loadingScreen);
     },
@@ -440,39 +427,47 @@ let Roundie = {
         },2000);
     },
 
-    addNode: (elem, options) => {
-
-        // create pole element
-        let pole = document.createElement('div');
-        pole.className += ` pole ${options.pole}`;
-
-        // create axis(dot) elements
-        for (let i = 0; i < options.axises.length; i++){
-            let dot =  document.createElement('div');
-            dot.className += ` axis-${options.axises[i][0]} ${options.axises[i][1]}`;
-
-            // create pies
-            if(typeof options.pies === 'string'){
-                let pie =  document.createElement('div');
-                pie.className += ` pie ${options.pies}`;
-                dot.appendChild(pie);
-            }else if(typeof options.pies === 'object'){
-                let pie =  document.createElement('div');
-                pie.className += ` pie ${options.pies[i]}`;
-                dot.appendChild(pie);
-            }
-            pole.appendChild(dot);
-        }
-        elem.appendChild(pole);
-    },
-
     addNodes: (nodes, options) => {
-        for (let i = 0; i < nodes.length; i++){
-            let node = nodes[i];
-            Roundie.addNode(node, options)
+
+        /*main function*/
+        function node(elem, options){
+            // create pole element
+            let pole = document.createElement('div');
+            pole.className += ` pole ${options.pole}`;
+
+            // create axis(dot) elements
+            for (let i = 0; i < options.axises.length; i++){
+                let dot =  document.createElement('div');
+                dot.className += ` axis-${options.axises[i][0]} ${options.axises[i][1]}`;
+
+                // create pies
+                if(typeof options.pies === 'string'){
+                    let pie =  document.createElement('div');
+                    pie.className += ` pie ${options.pies}`;
+                    dot.appendChild(pie);
+                }else if(typeof options.pies === 'object'){
+                    let pie =  document.createElement('div');
+                    pie.className += ` pie ${options.pies[i]}`;
+                    dot.appendChild(pie);
+                }
+                pole.appendChild(dot);
+            }
+            elem.appendChild(pole);
         }
+
+        // check to add nodes
+        if(nodes.constructor.name === "NodeList"){
+            for (let i = 0; i < nodes.length; i++){
+                let node = nodes[i];
+                node(node, options)
+            }
+        }else{
+            node(nodes, options)
+        }
+
     },
 
+    /* pop some words*/
     pop: (popWords)=>{
         let popPosition = document.querySelector('#pop-position');
         if(!popPosition){
@@ -492,6 +487,46 @@ let Roundie = {
         },5300);
 
     },
+
+    /* add or remove classes */
+    addClass: (elem, className)=>{
+        if(elem.constructor.name === "NodeList"){
+            for(let i = 0; i < elem.length; i++){
+                elem[i].className += ` ${className} `;
+            }
+        }else{
+            elem.className += ` ${className} `;
+        }
+    },
+
+    add: (elem, className)=>{
+        Roundie.addClass(elem, className);
+    },
+
+    removeClass: (elem, className)=>{
+        if(elem.constructor.name === "NodeList"){
+            for(let i = 0; i < elem.length; i++){
+                elem[i].className = elem[i].className.replace(new RegExp(className), ' ');
+            }
+        }else{
+            elem.className = elem.className.replace(new RegExp(className), ' ');
+        }
+
+    },
+
+    rm: (elem, className)=>{
+        Roundie.removeClass(elem, className);
+    },
+
+    toggleClass: (elem, removeClass, addClass) => {
+        Roundie.rm(elem, removeClass);
+        Roundie.add(elem, addClass);
+    },
+
+    toggle: (elem, removeClass, addClass) => {
+        Roundie.toggleClass(elem, removeClass, addClass);
+    },
+
 };
 
 window.Roundie = Roundie;
