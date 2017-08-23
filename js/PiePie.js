@@ -4,7 +4,7 @@
 * Description: This JavaScript file is a supplement to PiePie.css.
 *              It works and only works with PiePie.css.
 * License: All Rights Reserved (for now)
-* GitHub: https://github.com/AustinJiangH/PiePie.css
+* GitHub: https://github.com/AustinJiangH/PiePie
 * */
 
 
@@ -55,118 +55,6 @@ for(let i = 0; i < 360; i++){
 }
 
 
-/* functions used */
-
-// get unit of length from class name
-function getUnit(elem){
-    return /rem/.test(elem.className.match(/[0-9]+rem|[0-9]+px/)[0]) ? 'rem' : 'px'
-}
-
-// get length from class name
-function getLength(elem, unit){
-    let length;
-    if(unit === 'rem'){
-        length =  Number(elem.className.match(/[0-9]+rem/)[0].slice(0,-3));
-
-        /*
-         * to beautify the layout on mobile devices
-         * you can set the rate before using
-         * 'PiePie.options.mobileScaleRate = 1.333'
-         * */
-        if(PiePie.isMobile){
-            length = length/PiePie.options.mobileScaleRate;
-        }
-    }else if(unit === 'px'){
-        length =  Number(elem.className.match(/[0-9]+px/)[0].slice(0,-2));
-    }
-    return length;
-}
-
-// get bounce length
-function getBounceLength(elem, unit){
-    let bounceLength;
-    if(unit === 'rem'){
-        bounceLength =  Number(elem.className.match(/bounce-[0-9]+rem/)[0].match(/[0-9]+/)[0]);
-
-        /*
-         * to beautify the layout on mobile devices
-         * you can set the rate before using
-         * 'PiePie.options.mobileScaleRate = 1.333'
-         * */
-        if(PiePie.isMobile){
-            bounceLength = bounceLength/PiePie.options.mobileScaleRate;
-        }
-    }else if(unit === 'px'){
-        bounceLength =  Number(elem.className.match(/bounce-[0-9]+px/)[0].match(/[0-9]+/)[0]);
-    }
-    return bounceLength;
-}
-
-function appendString(elem, length, unit){
-    let string = document.createElement('div');
-    string.className += 'string';
-    string.style.width = `${length}${unit}`;
-    elem.appendChild(string);
-}
-
-function appendPop (elem, length, x, y, unit){
-    // set a listener on parent node
-    elem.parentNode.addEventListener('mouseover', ()=>{
-
-        // create an element to make sure the children do not vanish immediate after the mouse leaves
-        let invisibleElem = document.createElement('div');
-        invisibleElem.className += 'invisible-pie pie';
-        invisibleElem.style.width = `${length*1.7}${unit}`;
-        invisibleElem.style.height = `${length*1.7}${unit}`;
-        invisibleElem.style.borderRadius = `${length}${unit}`;
-        invisibleElem.style.top = `${length*-0.85}${unit}`;
-        invisibleElem.style.left = `${length*-0.85}${unit}`;
-        invisibleElem.addEventListener('mouseover',()=>{
-            elem.style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
-        });
-        elem.parentNode.appendChild(invisibleElem);
-        elem.style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
-    });
-    elem.parentNode.addEventListener('mouseout', ()=>{
-        setTimeout(()=>{
-            let invisibleElem2 = elem.parentNode.querySelector('.invisible-pie');
-            elem.parentNode.removeChild(invisibleElem2);
-        },300);
-        elem.style.transform = `translate(0, 0) rotate(270deg)`;
-    });
-}
-
-function appendBounce (elem, length, bounceLength, x, y ,bx, by, unit){
-    // add general style
-    elem.style.transition = `${PiePie.options.bounceDuration/2}ms ease`;
-
-    // add bounce line
-    if(/line/.test(elem.className)){
-        let string = document.createElement('div');
-        string.className += 'string';
-        string.style.transition = `${PiePie.options.bounceDuration/2}ms ease`;
-
-        // set bounce animation
-        setInterval(()=>{
-            elem.style.transform = `translate(${x+bx}${unit}, ${y+by}${unit})`;
-            string.style.width = `${length + bounceLength}${unit}`;
-            setTimeout(()=>{
-                elem.style.transform = `translate(${x}${unit}, ${y}${unit})`;
-                string.style.width = `${length}${unit}`;
-            },PiePie.options.bounceDuration/2)
-        },PiePie.options.bounceDuration);
-        elem.appendChild(string);
-    } else {
-
-        // set bounce animation
-        setInterval(()=>{
-            elem.style.transform = `translate(${x+bx}${unit}, ${y+by}${unit})`;
-            setTimeout(()=>{
-                elem.style.transform = `translate(${x}${unit}, ${y}${unit})`;
-            },PiePie.options.bounceDuration/2)
-        },PiePie.options.bounceDuration);
-    }
-}
 
 
 // PiePie Object
@@ -216,21 +104,39 @@ let PiePie = {
             '2rem accent-2 deep-orange',
         ],
 
-        /*
+        /*/!*
         * for scaling on mobile devices
-        * */
+        * *!/
+        mobileScaleRate: 1.66,
+
+        /!*
+        * transition duration of elements with 'pop' class name
+        *!/
+        popDuration: 400,
+
+        bounceDuration: 1000,*/
+    },
+
+    variables:{
+        /*
+         * for scaling on mobile devices
+         * */
         mobileScaleRate: 1.66,
 
         /*
-        * transition duration of elements with 'pop' class name
-        */
+         * transition duration of elements with 'pop' class name
+         */
         popDuration: 400,
 
         bounceDuration: 1000,
+
+        /* using user agent string to tell whether it's mobile or not*/
+        isMobile: /Android|iPhone|Mobile/i.test(navigator.userAgent),
+
     },
 
-    /* using user agent string to tell whether it's mobile or not*/
-    isMobile: /Android|iPhone|Mobile/i.test(navigator.userAgent),
+
+
 
     /* set pies' styles to the dom */
     setPies: () =>{
@@ -238,12 +144,10 @@ let PiePie = {
         // get all pie elements
         let allPieElems = document.querySelectorAll('.pie');
         if(allPieElems){
-            for(let i = 0; i < allPieElems.length; i++){
-                let pie = allPieElems[i];
-
+            allPieElems.forEach((pie)=>{
                 /*
-                * if the pie is without a radius class name, it won't be working
-                * */
+                 * if the pie is without a radius class name, it won't be working
+                 * */
                 if(pie.className.match(/[0-9]+rem|[0-9]+px/)){
 
                     // get unit of radius
@@ -260,16 +164,16 @@ let PiePie = {
                         /*
                          * to beautify the layout on mobile devices
                          * you can set the rate before using
-                         * 'PiePie.options.mobileScaleRate = 1.333'
+                         * 'PiePie.variables.mobileScaleRate = 1.333'
                          * */
-                        if(PiePie.isMobile){radius = radius/PiePie.options.mobileScaleRate}
+                        if(PiePie.variables.isMobile){radius = radius/PiePie.variables.mobileScaleRate}
                     }else if(unit === 'px'){
                         radius = Number(pie.className.match(/[0-9]+rem|[0-9]+px/)[0].slice(0,-2));
                     }
 
                     /*
-                    * compute and set styles to pies
-                    * */
+                     * compute and set styles to pies
+                     * */
                     let height = radius*1.1;
                     pie.style.height = `${height}${unit}`;
                     pie.style.width = `${height}${unit}`;
@@ -280,7 +184,7 @@ let PiePie = {
                     pie.style.left = `${top}${unit}`;
                     pie.style.borderRadius = `${radius}${unit}`;
                 }
-            }
+            });
         }
     },
 
@@ -307,26 +211,137 @@ let PiePie = {
             "axis-11",
         ];
 
-        // set axises
-        for (let i = 0; i < allAxises.length; i++){
 
+        allAxises.forEach((axis)=>{
             // translate the axises
-            let axisElems = document.querySelectorAll(`.${allAxises[i]}`);
+            let axisElems = document.querySelectorAll(`.${axis}`);
             if(axisElems){
-                PiePie.setRays(axisElems, i*30);
+                PiePie.setRays(axisElems, Number(axis.replace(/axis-/, ''))*30);
             }
-        }
+        });
     },
 
     /* set rays to the dom */
     setRays: (axis = false, deg = false) => {
 
-        function ray(rays,i){
-            if(rays){
-                for(let j = 0; j < rays.length; j++){
+        /* functions used */
 
-                    // default styles
-                    let ray = rays[j];
+        // get unit of length from class name
+        // get unit of length from class name
+        function getUnit(elem){
+            return /rem/.test(elem.className.match(/[0-9]+rem|[0-9]+px/)[0]) ? 'rem' : 'px'
+        }
+
+        // get length from class name
+        function getLength(elem, unit){
+            let length;
+            if(unit === 'rem'){
+                length =  Number(elem.className.match(/[0-9]+rem/)[0].slice(0,-3));
+
+                /*
+                 * to beautify the layout on mobile devices
+                 * you can set the rate before using
+                 * 'PiePie.variables.mobileScaleRate = 1.333'
+                 * */
+                if(PiePie.variables.isMobile){
+                    length = length/PiePie.variables.mobileScaleRate;
+                }
+            }else if(unit === 'px'){
+                length =  Number(elem.className.match(/[0-9]+px/)[0].slice(0,-2));
+            }
+            return length;
+        }
+
+        // get bounce length
+        function getBounceLength(elem, unit){
+            let bounceLength;
+            if(unit === 'rem'){
+                bounceLength =  Number(elem.className.match(/bounce-[0-9]+rem/)[0].match(/[0-9]+/)[0]);
+
+                /*
+                 * to beautify the layout on mobile devices
+                 * you can set the rate before using
+                 * 'PiePie.variables.mobileScaleRate = 1.333'
+                 * */
+                if(PiePie.variables.isMobile){
+                    bounceLength = bounceLength/PiePie.variables.mobileScaleRate;
+                }
+            }else if(unit === 'px'){
+                bounceLength =  Number(elem.className.match(/bounce-[0-9]+px/)[0].match(/[0-9]+/)[0]);
+            }
+            return bounceLength;
+        }
+
+        function appendString(elem, length, unit){
+            let string = document.createElement('div');
+            string.className += 'string';
+            string.style.width = `${length}${unit}`;
+            elem.appendChild(string);
+        }
+
+        function appendPop (elem, length, x, y, unit){
+            // set a listener on parent node
+            elem.parentNode.addEventListener('mouseover', ()=>{
+
+                // create an element to make sure the children do not vanish immediate after the mouse leaves
+                let invisibleElem = document.createElement('div');
+                invisibleElem.className += 'invisible-pie pie';
+                invisibleElem.style.width = `${length*1.7}${unit}`;
+                invisibleElem.style.height = `${length*1.7}${unit}`;
+                invisibleElem.style.borderRadius = `${length}${unit}`;
+                invisibleElem.style.top = `${length*-0.85}${unit}`;
+                invisibleElem.style.left = `${length*-0.85}${unit}`;
+                invisibleElem.addEventListener('mouseover',()=>{
+                    elem.style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
+                });
+                elem.parentNode.appendChild(invisibleElem);
+                elem.style.transform = `translate(${x}${unit}, ${y}${unit}) rotate(0deg)`;
+            });
+            elem.parentNode.addEventListener('mouseout', ()=>{
+                setTimeout(()=>{
+                    let invisibleElem2 = elem.parentNode.querySelector('.invisible-pie');
+                    elem.parentNode.removeChild(invisibleElem2);
+                },300);
+                elem.style.transform = `translate(0, 0) rotate(270deg)`;
+            });
+        }
+
+        function appendBounce (elem, length, bounceLength, x, y ,bx, by, unit){
+            // add general style
+            elem.style.transition = `${PiePie.variables.bounceDuration/2}ms ease`;
+
+            // add bounce line
+            if(/line/.test(elem.className)){
+                let string = document.createElement('div');
+                string.className += 'string';
+                string.style.transition = `${PiePie.variables.bounceDuration/2}ms ease`;
+
+                // set bounce animation
+                setInterval(()=>{
+                    elem.style.transform = `translate(${x+bx}${unit}, ${y+by}${unit})`;
+                    string.style.width = `${length + bounceLength}${unit}`;
+                    setTimeout(()=>{
+                        elem.style.transform = `translate(${x}${unit}, ${y}${unit})`;
+                        string.style.width = `${length}${unit}`;
+                    },PiePie.variables.bounceDuration/2)
+                },PiePie.variables.bounceDuration);
+                elem.appendChild(string);
+            } else {
+
+                // set bounce animation
+                setInterval(()=>{
+                    elem.style.transform = `translate(${x+bx}${unit}, ${y+by}${unit})`;
+                    setTimeout(()=>{
+                        elem.style.transform = `translate(${x}${unit}, ${y}${unit})`;
+                    },PiePie.variables.bounceDuration/2)
+                },PiePie.variables.bounceDuration);
+            }
+        }
+
+
+        function ray(rays, i){
+            if(rays){
+                rays.forEach((ray)=>{
                     ray.style.height = '0px';
                     ray.style.width = '0px';
                     ray.style.position = 'absolute';
@@ -340,7 +355,7 @@ let PiePie = {
 
                         let x = length*Math.sin(i*2*Math.PI/360);
                         let y = length*Math.cos(i*2*Math.PI/360)*(-1);
-                        console.log(`${i}-${x}-${y}`)
+                        // console.log(`${i}-${x}-${y}`)
 
                         // line with out bounce
                         // line with bounce will be added in bounce part
@@ -379,7 +394,7 @@ let PiePie = {
                     }else {
                         console.error(`PiePie.js: ${ray} has no length, please add a length!`);
                     }
-                }
+                });
             }
         }
 
@@ -458,10 +473,9 @@ let PiePie = {
 
         // check to add nodes
         if(nodes.constructor.name === "NodeList"){
-            for (let i = 0; i < nodes.length; i++){
-                let node = nodes[i];
+            nodes.forEach((node)=>{
                 node(node, options)
-            }
+            });
         }else{
             node(nodes, options)
         }
@@ -492,9 +506,9 @@ let PiePie = {
     /* add or remove classes */
     addClass: (elem, className)=>{
         if(elem.constructor.name === "NodeList"){
-            for(let i = 0; i < elem.length; i++){
-                elem[i].className += ` ${className} `;
-            }
+            elem.forEach((e)=>{
+                e.className += ` ${className} `;
+            });
         }else{
             elem.className += ` ${className} `;
         }
@@ -506,9 +520,9 @@ let PiePie = {
 
     removeClass: (elem, className)=>{
         if(elem.constructor.name === "NodeList"){
-            for(let i = 0; i < elem.length; i++){
-                elem[i].className = elem[i].className.replace(new RegExp(className), ' ');
-            }
+            elem.forEach((e)=>{
+                e.className = e.className.replace(new RegExp(className), ' ');
+            });
         }else{
             elem.className = elem.className.replace(new RegExp(className), ' ');
         }
